@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AfiliateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
+Route::get('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
