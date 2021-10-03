@@ -6,11 +6,6 @@
     <li class="nav-item">
       <a class="nav-link" href="{{route('add-afiliate')}}">Crear afiliado</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{route('register')}}">Registrarse</a>
-    </li>
-
-   
   </ul>
 
   <!--

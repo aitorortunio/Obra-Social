@@ -16,11 +16,39 @@
         </div>
     </div>
 
-    <div class="navbar-nav my-2 my-lg-0">
+
+    <div class="card border-dark mb-3" align=center style="max-width: 18rem;">
+        <img src="http://ieanjesus.org.ec/wp-content/uploads/OBRA-SOCIAL.png" class="card-img-top" alt="...">
+        <div class="card-body">
+        &nbsp;
+        <a href="" type="button" class="btn btn-dark">Mis datos</a>
+        <br>
+        <br>
+        &nbsp; <a href="" type="button" class="btn btn-dark">Planes</a>
+        <br>
+        <br>
+        &nbsp; <a href="" type="button" class="btn btn-dark">Solicitudes</a>
+        <br>
+        <br>
+
+        <div class="navbar-nav my-2 my-lg-0">
             <form method="POST" action="{{ route ('logout' )}}" calss="nav-item">
                 @csrf
                 &nbsp;
                 <a href="#" type="button" class="btn btn-dark" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); this.closest('form').submit();" >Cerrar sesion</a>
             </form>
+        </div>
+</div>
+
+
+
+
+    <div class="card text-white bg-white mb-3" style="width: 18rem;">
+        
+    
+    
   </div>
+</div>
+    
+   
     @endsection
