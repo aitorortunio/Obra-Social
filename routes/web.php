@@ -15,8 +15,9 @@ use App\Http\Controllers\AfiliateController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    //return view('welcome');
+    return view('planes');
+})->name('/');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

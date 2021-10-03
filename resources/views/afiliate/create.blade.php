@@ -1,12 +1,15 @@
-<x-app-layout>
-    <x-slot name="header">
+
+@extends('layouts.app')
+@section('contenido')
+    <!--<x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Crear Afiliado') }}
             </h2>
-    </x-slot>
+    </x-slot>-->
 <!-- component -->
-
-
+<br>
+<div class="col-sm-3"><h2><b>Formulario de afiliado</b></h2></div>
+     
   <form action="{{ route('store-afiliate') }}" method="POST" enctype="multipart/form-data">
     @csrf
       <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
@@ -120,4 +123,4 @@
             </div>
     </div>
   </form>
-</x-app-layout>
+  @endsection
