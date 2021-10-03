@@ -56,7 +56,7 @@
 
             <div align=center>
                 <br>
-                <a href="{{route('register')}}" type="button" class="btn btn-dark">¿No tienes cuenta?</a>
+                <a href="{{route('add-afiliate')}}" type="button" class="btn btn-dark">¿No tienes cuenta?</a>
             </div>
         </form>
     </x-auth-card>

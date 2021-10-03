@@ -3,9 +3,9 @@
     <li class="nav-item active">
       <a class="nav-link" href="{{route('/')}}">Obra Social</a>
     </li>
-    <li class="nav-item">
+    <!--<li class="nav-item">
       <a class="nav-link" href="{{route('add-afiliate')}}">Crear afiliado</a>
-    </li>
+    </li>-->
   </ul>
 
   <!--
