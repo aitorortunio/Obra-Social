@@ -119,8 +119,8 @@
                 
           <!-- buttons -->
           <div class="form-group">
-                                <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Guardar</button>
-            </div>
+            <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Guardar</button>
+          </div>
     </div>
   </form>
   @endsection
