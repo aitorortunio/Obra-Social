@@ -7,15 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Prestation extends Model
 {
    
-
     protected $fillable = [
-        'name',
-        'percentage'
+        'name'
     ];
-
-    public function plan(){
-        return $this->hasMany(Plan::class);
-    }
 
     
 }

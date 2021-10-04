@@ -20,7 +20,8 @@ class Afiliate extends Model
         'house_number',
         'email',
         'tel',
-        'password'
+        'password',
+        'plan_id'
 
     ];
 

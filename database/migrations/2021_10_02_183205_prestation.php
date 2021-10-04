@@ -14,10 +14,12 @@ class Prestation extends Migration
     public function up()
     {
         Schema::create('prestation', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->double('percentage');
             $table->rememberToken();
             $table->timestamps();
+
+            
         });
     
     }
