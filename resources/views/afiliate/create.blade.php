@@ -8,7 +8,7 @@
     </x-slot>-->
 <!-- component -->
 <br>
-<div class="col-sm-3"><h2><b>Formulario de afiliado</b></h2></div>
+<div class="col-sm-3 w-full "><h2><b>Formulario de afiliado</b></h2></div>
      
   <form action="{{ route('store-afiliate') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -119,7 +119,7 @@
                 
           <!-- buttons -->
           <div class="form-group">
-            <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Guardar</button>
+            <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Siguiente</button>
           </div>
     </div>
   </form>

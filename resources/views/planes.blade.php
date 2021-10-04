@@ -45,4 +45,5 @@
 <div class="col text-center">
     <a href="{{ route('login') }}" class="btn btn-dark" align=center>Iniciar sesion</a>
 </div>
+
 @endsection

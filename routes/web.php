@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
-Route::get('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
+Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';

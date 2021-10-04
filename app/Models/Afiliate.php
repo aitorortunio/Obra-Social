@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Afiliate extends Model
 {
-    
+    protected $table = "afiliate";
+    protected $primaryKey= "dni";
+    protected $id = "dni";
 
     protected $fillable = [
         'dni',
