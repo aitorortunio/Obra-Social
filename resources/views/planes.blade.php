@@ -9,17 +9,17 @@
 <br>
 <div class="row">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <!--Es un espacio (Es rancio lo se pero bueno para safar alcanza jeje)-->
-    <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+    <div class="card text-white bg-dark mb-3" align=center style="width: 18rem;">
     <div class="card-body">
-            <h1 class="card-title" align=center>Plan A</h1>
+            <h1 class="card-title" align=center >Plan A</h1>
             <h4  align=center>Prestacion 1</h4>
             <h4  align=center>Prestacion 2</h4>
             <h4  align=center>Prestacion 3</h4>
-            <a href="#" class="btn btn-secondary">Mas info</a>
+            <a href="#" class="btn btn-secondary center">Mas info</a>
         </div>
     </div>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+    <div class="card text-white bg-dark mb-3" align=center style="width: 18rem;">
         <div class="card-body">
             <h1 class="card-title" align=center>Plan B</h1>
             <h4  align=center>Prestacion 1</h4>
@@ -29,7 +29,7 @@
         </div>
     </div>
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+    <div class="card text-white bg-dark mb-3" align=center style="width: 18rem;">
     <div class="card-body">
             <h1 class="card-title" align=center>Plan C</h1>
             <h4  align=center>Prestacion 1</h4>

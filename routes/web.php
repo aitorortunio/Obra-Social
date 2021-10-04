@@ -19,21 +19,23 @@ Route::get('/', function () {
     return view('planes');
 })->name('/');
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+
+
 
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::get('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
 
 Route::middleware(['empleado', 'admin'])->group(function(){
-    
+   // return 'hola';
 });
+
+
 /*
 Route::middleware(['afiiado'])->group(function(){
     Route::get('/add-afiliate', [AfiliateController::class, 'show'])->name('add-afiliate');
 });*/
+require __DIR__.'/auth.php';
