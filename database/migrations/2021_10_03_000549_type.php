@@ -14,7 +14,7 @@ class Type extends Migration
     public function up()
     {
         Schema::create('Type', function (Blueprint $table) {
-            $table->string('name')->primary();
+            $table->string('name');
         });
     }
 

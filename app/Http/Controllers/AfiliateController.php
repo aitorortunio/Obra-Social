@@ -23,8 +23,12 @@ class AfiliateController extends Controller
     }
 
     //Devuelve la vista de todas las recetas asociadas a una categoria
-    public function show($id){
-       
+    public function show(){
+       return view('afiliate.home');
+    }
+
+    public function showAfiliate($id){
+        return view('afiliate.home');
     }
 
     

@@ -14,7 +14,8 @@ class TypePlan extends Migration
     public function up()
     {
         Schema::create('TypePlan', function (Blueprint $table) {
-            $table->string('price');
+            $table->double('price');
+            $table->boolean('state'); //Activo/Inactivo
         });
 
     }

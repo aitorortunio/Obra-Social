@@ -17,7 +17,7 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="Usuario" :value="__('Usuario')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
@@ -43,8 +43,8 @@
             <div align=center>
                 <x-button class="ml-3">
                         {{ __('Iniciar sesion') }}
-                    </x-button>
-                </div>
+                </x-button>
+            </div>
 <br>
             <div align=center>
             @if (Route::has('password.request'))
