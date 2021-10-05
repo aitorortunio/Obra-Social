@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\Afiliate;
+use App\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -34,7 +35,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+       
         $request->validate([
              'name' => [  'max:255'],
              'email' => [ 'string', 'email', 'max:255', 'unique:users'],
@@ -46,6 +47,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+       $role_afiliado = Role::where('name', 'afiliado')->first();
+        $user->role()->save($role_afiliado);
+        
 
         event(new Registered($user));
 
