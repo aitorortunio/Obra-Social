@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('contenido')
 <head>
-<h1 align=center>Conoce nuestros planes veganos</h1>
+<h1 align=center>Conoce nuestros planes</h1>
 </head>
 <br>
 <br>

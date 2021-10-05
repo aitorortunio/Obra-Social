@@ -19,9 +19,9 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create( $afiliado)
+    public function create(Afiliate $afiliado)
     {
-        return view('auth.register')->with(['afiliado' => $afiliado]);
+        return view('auth.register')->with('afiliado' , $afiliado);
     }
 
     /**
@@ -34,12 +34,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $request->validate([
-             'name' => [ 'string', 'max:255'],
+             'name' => [  'max:255'],
              'email' => [ 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+       
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
