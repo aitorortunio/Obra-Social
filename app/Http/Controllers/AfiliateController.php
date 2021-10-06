@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Auth\AfiliateRequest;
 use App\Models\Afiliate;
 use App\Models\Plan;
+use App\Models\Role;
 
 class AfiliateController extends Controller
 {
@@ -21,20 +22,16 @@ class AfiliateController extends Controller
         return redirect()->route('register', ['afiliado'=> $afiliado]);
     }
 
-    public function addPlanToAfiliate (){
-       // $afiliado = Afiliate ::findOrFail($id);
-        //$afiliado->plan_id = $request->plan_id;
-        //$afiliado->save();
-        //return redirect()->route('dashboard');
+    public function addPlanToAfiliate($id){
+        $afiliado = Afiliate ::findOrFail($id);
         $plans = Plan::all();
-        dd($plans);
-        return view('afiliate.plan')->with('plans', $plans);
-        //return "hola";
+        return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado);
     }
 
     //Devuelve la vista de todas las recetas asociadas a una categoria
-    public function show(){
-       return view('afiliate.home');
+    public function show($id){
+        $afiliado = Afiliate::findOrFail($id);
+       return view('afiliate.home')->with('afiliado', $afiliado);
     }
 
     public function showAfiliate($id){
@@ -49,12 +46,16 @@ class AfiliateController extends Controller
     }
 
     public function delete($id){
-        
-
     }
 
 
-    public function update (){
-       
+    public function update (AfiliateRequest $request, $id){
+        $afiliado = Afiliate::findOrFail($id);
+        $afiliado->plan_id = $request->plan_id;
+
+        $afiliado->save();
+        dd($afiliado);
+        return redirect()->route('dashboard');
+
     }
 }

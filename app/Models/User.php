@@ -46,11 +46,10 @@ class User extends Authenticatable
   
 
     public function role() {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function hasRole($role) {
-        dd($this->role->name);
         if($this->role->name== $role){
             return true;
         }

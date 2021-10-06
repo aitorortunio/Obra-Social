@@ -14,13 +14,11 @@
 
             <!-- Name -->
             <div>
-                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->dni}}" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->name}}" required autofocus />
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-               
-
                 <x-input id="email" class="block mt-1 w-full" type="hidden" name="email" value="{{$afiliado->email}}" required />
             </div>
 

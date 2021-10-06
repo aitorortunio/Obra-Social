@@ -13,6 +13,7 @@ class Plan extends Model
         'name'
     ];
     public $timestamps=false;
+    
     protected $table = "plans";
 
 }

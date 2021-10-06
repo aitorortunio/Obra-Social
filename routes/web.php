@@ -27,7 +27,9 @@ Route::get('/dashboard', function () {
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
 //Route::patch('/store-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
-Route::get('/store-plan-afiliate', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
+Route::get('/store-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
+Route::get('/afiliate/show/{id}', [AfiliateController::class, 'show'])->name('afiliate-show');
+Route::patch('/afiliate', [AfiliateController::class, 'addPlanToAfiliate'])->name('afiliate-update');
 
 
 Route::middleware(['empleado', 'admin'])->group(function(){

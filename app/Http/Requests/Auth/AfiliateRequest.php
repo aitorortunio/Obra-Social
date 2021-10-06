@@ -18,8 +18,6 @@ class AfiliateRequest extends FormRequest
 
         $rules = [
             'name' => 'required|max:100'
-        
-            
         ];
 
         return $rules;
