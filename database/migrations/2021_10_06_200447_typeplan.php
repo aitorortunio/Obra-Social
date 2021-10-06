@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,14 +14,14 @@ class TypePlan extends Migration
      */
     public function up()
     {
-        Schema::create('TypePlan', function (Blueprint $table) {
+        Schema::create('typeplan', function (Blueprint $table) {
             $table->id();
             $table->double('price');
             $table->boolean('state'); //Activo/Inactivo
             $table->integer('type_id');
             $table->integer('plan_id');
 
-            $table->foreign('plan_id')->references('id')->on('plan')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             $table->foreign('type_id')->references('id')->on('type')->onDelete('cascade');
         });
 
@@ -33,6 +34,6 @@ class TypePlan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TypePlan');
+        Schema::dropIfExists('typeplan');
     }
 }

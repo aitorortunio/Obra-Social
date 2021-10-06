@@ -31,7 +31,7 @@ class Afiliate extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('plan_id')->references('id')->on('plan')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
         });
     }
 

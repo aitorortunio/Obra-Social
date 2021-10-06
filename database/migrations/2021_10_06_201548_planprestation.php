@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PlanPrestation extends Migration
+class Planprestation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class PlanPrestation extends Migration
      */
     public function up()
     {
-        Schema::create('PlanPrestation', function (Blueprint $table) {
+        Schema::create('planprestation', function (Blueprint $table) {
             $table->id();
             $table->integer('percentage');
             $table->integer('plan_id');
             $table->integer('prestation_id');
 
-            $table->foreign('plan_id')->references('id')->on('plan')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             $table->foreign('prestation_id')->references('id')->on('prestation')->onDelete('cascade');
         });
     }
@@ -31,6 +31,6 @@ class PlanPrestation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PlanPrestation');
+        Schema::dropIfExists('planprestation');
     }
 }

@@ -15,22 +15,16 @@ class PlanesSeeder extends Seeder
     public function run()
     {
         //Plan A
-        Plan::create(array(
-            'name'=> 'A',
-            'price'=> '20.000',
-            'state'=> true,
-        ));
+        Plan::create([
+            'name'=> 'A'
+        ]);
         //Plan B
-        Plan::create(array(
+        Plan::create([
             'name'=> 'B',
-            'price'=> '10.000',
-            'state'=> true,
-        ));
+        ]);
         //Plan C
-        Plan::create(array(
+        Plan::create([
             'name'=> 'C',
-            'price'=> '5.000',
-            'state'=> true,
-        ));
+        ]);
     }
 }
