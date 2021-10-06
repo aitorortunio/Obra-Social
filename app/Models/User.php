@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,13 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function role(){
-        return $this
-        ->belongsTo('App\Models\Role');
+  
+
+    public function role() {
+        return $this->hasOne(Role::class);
     }
 
     public function hasRole($role) {
-        if ($this->roles()->where('name', $role)->first()) {
+        dd($this->role->name);
+        if($this->role->name== $role){
             return true;
         }
         return false;
