@@ -14,7 +14,7 @@
 
             <!-- Name -->
             <div>
-                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->dni}}" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->name}}" required autofocus />
             </div>
 
             <!-- Email Address -->

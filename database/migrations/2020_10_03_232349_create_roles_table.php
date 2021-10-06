@@ -17,6 +17,8 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name'); 
+            $table->integer('user_id')->nullable()->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
