@@ -49,6 +49,7 @@ class RegisteredUserController extends Controller
         $user->role_id= 3;   
         $user->save();
 
+
         event(new Registered($user));
 
         Auth::login($user);

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
+
 class RoleSeeder extends Seeder
 {
     /**
@@ -18,9 +19,11 @@ class RoleSeeder extends Seeder
             'name' => 'admin'
         ));
 
+
         Role::create(array(
             'name' => 'empleado'
         ));
+
 
         Role::create(array(
             'name' => 'afiliado'
