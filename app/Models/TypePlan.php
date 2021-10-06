@@ -14,6 +14,7 @@ class TypePlan extends Model
         'type_id'
     ];
 
+    protected $table = "typeplan";
 
     public function plan(){
         return $this->hasOne(Plan::class);

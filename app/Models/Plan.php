@@ -10,5 +10,5 @@ class Plan extends Model
         'name'
     ];
   
-
+    protected $table = "plan";
 }

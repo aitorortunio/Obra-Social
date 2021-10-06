@@ -11,6 +11,6 @@ class Type extends Model
         'name'
     ];
 
-    
+    protected $table = "type";
 
 }

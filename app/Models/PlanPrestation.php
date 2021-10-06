@@ -14,6 +14,7 @@ class PlanPrestation extends Model
         'prestation_id'
     ];
 
+    protected $table = "planprestation";
 
     public function plan(){
         return $this->hasOne(Plan::class);

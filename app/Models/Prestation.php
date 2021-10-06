@@ -11,5 +11,5 @@ class Prestation extends Model
         'name'
     ];
 
-    
+    protected $table = "prestation";
 }

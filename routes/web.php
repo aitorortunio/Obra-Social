@@ -24,10 +24,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-
-
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
+//Route::patch('/store-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
+Route::get('/store-plan-afiliate', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
+
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
