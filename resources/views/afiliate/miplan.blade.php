@@ -1,8 +1,7 @@
-
 @extends('layouts.app')
 @section('contenido')
 <head>
-<h1 align=center>Planes</h1>
+<h1 align=center>Plan</h1>
 </head>
 <br>
 <br>
@@ -39,11 +38,10 @@
         </div>
     </div>
 </div>
+    <div >
+      <a href="{{route('dashboard')}}" class="shadow bg-purple-900 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded mt-2 "><i class="fa fa-pencil mr-1"></i>Volver</a>
+    </div>
 
-<!--<a  href="https://www.google.com/">Iniciar sesion</a>
-<button onclick="window.location.href='https://www.google.com/'">Iniciar sesion</button>-->
-<div class="col text-center">
-    <a href="{{ route('login') }}" class="btn btn-dark" align=center>Iniciar sesion</a>
-</div>
+
 
 @endsection

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfiliateController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('re
 Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');
 
 
-
+Route::get('/planes', [PlanController::class, 'show'])->name('planes-show');
 
 
 Route::middleware(['empleado', 'admin'])->group(function(){

@@ -34,7 +34,8 @@
             <br>
         @endif
 
-        &nbsp; <a href="" type="button" class="btn btn-dark">Planes</a>
+        &nbsp; 
+        <a href="{{route('planes-show')}}" type="button" class="btn btn-dark">Planes</a>
         <br>
         <br>
         &nbsp; <a href="" type="button" class="btn btn-dark">Solicitudes</a>

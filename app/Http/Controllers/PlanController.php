@@ -7,4 +7,7 @@ use Illuminate\Http\Request;
 class PlanController extends Controller
 {
     //
+    public function show(){
+       return view('afiliate.miplan');
+    }
 }
