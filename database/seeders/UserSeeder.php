@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 'admin',
+            'documento' => '40123456',
             'email' => 'admin@admin.com',
             'role_id' => Role::where('name','admin')->first()->id,
             'password' => bcrypt('123445678'),
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 'empleado',
+            'documento' => '41123456',
             'email' => 'empleado@empleado.com',
             'role_id' => Role::where('name','empleado')->first()->id,
             'password' => bcrypt('12345678'),
@@ -33,6 +35,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 1,
+            'documento' => '42123456',
             'email' => 'afiliado@afiliado.com',
             'role_id' => Role::where('name','afiliado')->first()->id,
             'password' => bcrypt('12345678'),

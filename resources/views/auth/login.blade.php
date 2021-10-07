@@ -21,7 +21,7 @@
             <div>
                 <x-label for="Usuario" :value="__('Usuario')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="documento" class="block mt-1 w-full" type="documento" name="documento" :value="old('documento')" required autofocus />
             </div>
 
             <!-- Password -->
