@@ -2,8 +2,7 @@
 @extends('layouts.app')
 @section('contenido')
 
-<form action="{{route('afiliate-update', ['id' => $afiliado->id])}}" method="POST" enctype="multipart/form-data">
-                
+<form action="{{route('store-plan-afiliate', ['id' => $afiliado->id])}}" method="POST" enctype="multipart/form-data">           
 @csrf
 @method('PATCH')
 
@@ -13,7 +12,7 @@
       <select class="custom-select">
           <option disabled selected>Planes</option>
           @foreach($plans as $plan) 
-            <option value="{{$plan->name}}">{{$plan->name}}</option>
+            <option value="{{$plan->id}}">{{$plan->name}}</option>
           @endforeach
       </select>
   </div>

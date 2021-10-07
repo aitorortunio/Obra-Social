@@ -9,9 +9,10 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register-store') }}">
+        <form  action="{{ route('add-plan-afiliate', ['id' => $afiliado->id]) }}" method="POST" enctype="multipart/form-data">
+            
             @csrf
-
+    
             <!-- Name -->
             <div>
                 <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->name}}" required autofocus />

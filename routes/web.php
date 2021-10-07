@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfiliateController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
-//Route::patch('/store-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
-Route::get('/store-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('store-plan-afiliate');
-Route::get('/afiliate/show/{id}', [AfiliateController::class, 'show'])->name('afiliate-show');
-Route::patch('/afiliate', [AfiliateController::class, 'addPlanToAfiliate'])->name('afiliate-update');
+Route::get('/add-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
+Route::patch('/store-plan-afiliate/{id}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
+
+//Registrar usuario
+Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
+Route::post('/registrar', [UserController::class, 'store'])->name('registrarPost');
+
+
+
 
 
 Route::middleware(['empleado', 'admin'])->group(function(){
