@@ -17,7 +17,7 @@ class UserController extends Controller
         return view('auth.register')->with('afiliado' , $afiliado);
     }
 
-    function store(Request $r){        
+    function store(Request $r, $dni){        
         try{
             $user = new User(); 
             $user->name = $r->name;
@@ -26,7 +26,7 @@ class UserController extends Controller
             $user->role_id = 3; //3-->Es el id del afiliado.
             
             $user->save();          
-            return redirect()->route('add-plan-afiliate', ['id' => $user->id]); 
+            return redirect()->route('add-plan-afiliate', ['dni' => $dni]); 
             
             
         }

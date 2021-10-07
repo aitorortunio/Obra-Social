@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('contenido')
 
-<form action="{{route('store-plan-afiliate', ['id' => $afiliado->id])}}" method="POST" enctype="multipart/form-data">           
+<form action="{{route('store-plan-afiliate', ['dni' => $afiliado->dni])}}" method="POST" enctype="multipart/form-data">           
 @csrf
 @method('PATCH')
 

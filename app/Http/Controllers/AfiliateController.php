@@ -23,18 +23,18 @@ class AfiliateController extends Controller
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 
-    public function addPlanToAfiliate($id){
-        $afiliado = Afiliate::findOrFail($id);
+    public function addPlanToAfiliate($dni){
+        $afiliado = Afiliate::findOrFail($dni);
         $plans = Plan::all();
-        return 'hola';
-        //return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado);
+       
+        return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado);
     }
 
-    public function storePlanToAfiliate(Request $req, $id){
-        $afiliado = Afiliate::findOrFail($id);
+    public function storePlanToAfiliate(Request $req, $dni){
+        $afiliado = Afiliate::findOrFail($dni);
         $afiliado->plan_id = $req->id;
         $afiliado->save();
-        return redirect()->route('dashboard');
+        return redirect('/dashboard');
     }
 
 

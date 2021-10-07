@@ -27,12 +27,12 @@ Route::get('/dashboard', function () {
 
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
-Route::get('/add-plan-afiliate/{id}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
-Route::patch('/store-plan-afiliate/{id}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
+Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
+Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
 
 //Registrar usuario
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
-Route::post('/registrar', [UserController::class, 'store'])->name('registrarPost');
+Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');
 
 
 

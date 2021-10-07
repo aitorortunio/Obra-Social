@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form  action="{{ route('add-plan-afiliate', ['id' => $afiliado->id]) }}" method="POST" enctype="multipart/form-data">
+        <form  action="{{ route('registrarPost', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
             
             @csrf
     
