@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Plan;
+use App\Models\Prestation;
 
 class PrestacionesSeeder extends Seeder
 {
@@ -14,6 +14,16 @@ class PrestacionesSeeder extends Seeder
      */
     public function run()
     {
-        //Prestacion
+        Prestation::create([
+            'name'=> 'Kinesología'
+        ]);
+
+        Prestation::create([
+            'name'=> 'Óptica'
+        ]);
+
+        Prestation::create([
+            'name'=> 'Consultas médicas'
+        ]);
     }
 }

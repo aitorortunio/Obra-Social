@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlanPrestation extends Model
 {
-    
+    public $timestamps= false;
 
     protected $fillable = [
-        'name',
+        'percentage',
         'plan_id',
         'prestation_id'
     ];
