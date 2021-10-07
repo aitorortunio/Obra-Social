@@ -31,6 +31,10 @@ Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('stor
 Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
 Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
 
+Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
+Route::get('/afiliate/show/{id}', [AfiliateController::class, 'show'])->name('afiliate-show');
+
+
 //Registrar usuario
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
 Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');

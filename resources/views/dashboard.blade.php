@@ -23,8 +23,8 @@
         <img src="http://ieanjesus.org.ec/wp-content/uploads/OBRA-SOCIAL.png" class="card-img-top" alt="...">
         <div class="card-body">
         @if(Auth::user()->hasRole('afiliado'))
-            &nbsp;
-            <a href="" type="button" class="btn btn-dark">Mis datos</a>
+            &nbsp;        
+            <a href="{{route('afiliate-show', ['id'=> Auth::user()->name])}}" type="button" class="btn btn-dark">Mis datos</a>
             <br>
             <br>
         @else

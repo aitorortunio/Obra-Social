@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         ));
 
         User::create(array(
-            'name' => 'afiliado',
+            'name' => 1,
             'email' => 'afiliado@afiliado.com',
             'role_id' => Role::where('name','afiliado')->first()->id,
             'password' => bcrypt('1234'),
