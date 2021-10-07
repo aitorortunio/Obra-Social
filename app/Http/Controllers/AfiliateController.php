@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\Auth\AfiliateRequest;
+use App\Http\Requests\Auth\PlanRequest;
 use App\Models\Afiliate;
 use App\Models\Plan;
 use App\Models\Role;
-use GuzzleHttp\Psr7\Request;
+
+
 
 class AfiliateController extends Controller
 {
@@ -30,11 +32,11 @@ class AfiliateController extends Controller
         return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado);
     }
 
-    public function storePlanToAfiliate(Request $req, $dni){
+    public function storePlanToAfiliate(PlanRequest $req, $dni){
         $afiliado = Afiliate::findOrFail($dni);
         $afiliado->plan_id = $req->id;
         $afiliado->save();
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Se afilio con exito, por favor ingrese sus datos de loggeo');
     }
 
 

@@ -15,7 +15,9 @@
             </div>
         </div>
     </div>
-
+    @if(Session::has('success'))
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                @endif
    
     <div class="card border-dark mb-3" align=center style="max-width: 18rem;">
         <img src="http://ieanjesus.org.ec/wp-content/uploads/OBRA-SOCIAL.png" class="card-img-top" alt="...">
