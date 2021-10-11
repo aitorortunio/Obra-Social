@@ -109,7 +109,7 @@
                 
           <!-- buttons -->
           <div class="form-group">
-            <a href="{{route('dashboard')}}" class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Siguiente</button>
+            <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Guardar</button>
             <a href="{{route('dashboard')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded ">Cancelar</a> 
           </div>
     </div>
