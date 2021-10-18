@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Afiliate;
+use App\Models\solicitud;
 
 class afiliateSeeder extends Seeder
 {
@@ -14,6 +15,14 @@ class afiliateSeeder extends Seeder
      */
     public function run()
     {
+        $solicitud = new Solicitud;
+        $solicitud->id = 3000;
+        $solicitud->tipo = 'solicitud de reintegro';
+        $solicitud->institucion = 'UNS';
+        $solicitud->descripcion = 'me cobraron mal';
+        $solicitud->estado = 'activa';
+        $solicitud->fecha = '10/10/2021';
+        $solicitud->save();
         Afiliate::create([
             'dni'=>1,
             'dni_type'=>'dni',
@@ -26,7 +35,11 @@ class afiliateSeeder extends Seeder
             'house_number'=>123,
             'email'=>'fsa@gmail.com',
             'tel'=>4,
-            'password'=>'12345678'
+            'password'=>'12345678',
+            'solicitud_id'=>3000
         ]);
+
+        $solicitud->afiliate = 1;
+        $solicitud->save();
     }
 }

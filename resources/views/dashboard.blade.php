@@ -22,31 +22,32 @@
     <div class="card border-dark mb-3" align=center style="max-width: 18rem;">
         <img src="http://ieanjesus.org.ec/wp-content/uploads/OBRA-SOCIAL.png" class="card-img-top" alt="...">
         <div class="card-body">
-        @if(Auth::user()->hasRole('afiliado'))
-            &nbsp;        
-            <a href="{{route('afiliate-show', ['id'=> Auth::user()->name])}}" type="button" class="btn btn-dark">Mis datos</a>
-            <br>
-            <br>
-        @else
-            &nbsp;
-            <a href="" type="button" class="btn btn-dark">Afiliados</a>
-            <br>
-            <br>
+        
+
+        @if(Auth::user()->hasRole('afiliado') || Auth::user()->hasRole('admin'))
+                    
+            <a href="{{route('afiliate-show', ['id'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
+
+        @endif
+        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('empleado'))
+            <a href="" type="button" class="btn btn-dark mb-4 ">Gestión de planes</a>
+            <a href="" type="button" class="btn btn-dark mb-4">Gestión de usuarios</a>
+        @endif 
+        @if(Auth::user()->hasRole('admin'))
+            <a href="" type="button" class="btn btn-dark mb-4">Gestión de afiliados</a>
+            <a href="" type="button" class="btn btn-dark mb-4">Gestión de solicitudes</a>
         @endif
 
-        &nbsp; 
-        <a href="{{route('planes-show')}}" type="button" class="btn btn-dark">Planes</a>
-        <br>
-        <br>
-        &nbsp; <a href="" type="button" class="btn btn-dark">Solicitudes</a>
-        <br>
-        <br>
-    
+        @if(Auth::user()->hasRole('afiliado'))
+        <a href="{{route('planes-show')}}" type="button" class="btn btn-dark mb-4">Planes</a>
+        <a href="{{route('solicitud', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Solicitudes</a>
+        <a href="" type="button" class="btn btn-dark mb-4">Obtener cupon de pago</a>
+        @endif
        
         <div class="navbar-nav my-2 my-lg-0">
             <form method="POST" action="{{ route ('logout' )}}" calss="nav-item">
                 @csrf
-                &nbsp;
+                
                 <a href="#" type="button" class="btn btn-dark" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); this.closest('form').submit();" >Cerrar sesion</a>
             </form>
         </div>

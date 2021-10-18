@@ -29,5 +29,8 @@ class Afiliate extends Model
     public function plan(){
         return $this->hasOne(Plan::class);
     }
+    public function solicitudes(){
+        return $this->hasMany(Solicitud::class);
+    }
 
 }

@@ -34,6 +34,11 @@ Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePla
 Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
 Route::get('/afiliate/show/{id}', [AfiliateController::class, 'show'])->name('afiliate-show');
 
+Route::get('/solicitud/{dni}', [AfiliateController::class, 'solicitud'])->name('solicitud');
+Route::get('/reintegro/{dni}', [AfiliateController::class, 'reintegro'])->name('reintegro');
+Route::get('/prestacion/{dni}', [AfiliateController::class, 'prestacion'])->name('prestacion');
+Route::post('/store-reintegro', [AfiliateController::class, 'storeReintegro'])->name('store-reintegro');
+Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])->name('store-prestacion');
 
 //Registrar usuario
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');

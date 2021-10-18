@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Auth\AfiliateRequest;
 use App\Http\Requests\Auth\PlanRequest;
+use App\Http\Requests\Auth\SolicitudRequest;
 use App\Models\Afiliate;
 use App\Models\Plan;
-use App\Models\Role;
-
-
+use App\Models\solicitud;
+use Solicitud as GlobalSolicitud;
 
 class AfiliateController extends Controller
 {
@@ -72,7 +72,91 @@ class AfiliateController extends Controller
      
         $afiliado->save();
         
-        return redirect()->route('dashboard');
+        return redirect('/dashboard');
 
     }
+
+
+    public function solicitud($dni){
+        $afiliado = Afiliate::findOrFail($dni);
+        $solicitud = Solicitud::where('afiliate', '=', $afiliado->dni)->get();
+        
+        return view('afiliate.solicitud')->with('solicitud', $solicitud);
+    }
+    public function reintegro(){
+        return view('afiliate.solicitud_reintegro');
+    }
+
+    public function prestacion(){
+        return view('afiliate.solicitud_prestacion');
+    }
+
+    public function storePrestacion(SolicitudRequest $request){
+        $solicitud = new Solicitud();
+        $solicitud->tipo= 'prestacion';
+        $solicitud->institucion=$request->institucion;
+        $solicitud->descripcion=$request->descripcion;
+        $solicitud->estado=$request->estado;
+        $solicitud->fecha=$request->fecha;
+        $solicitud->afiliate=$request->afiliate;
+
+        if($request->hasFile('orden_medica')){
+            $filelink=file_get_contents($request->file('orden_medica'));
+            
+        }else{
+            $filelink=null;
+        }
+        $encode_image= base64_encode($filelink);
+        $solicitud->orden_medica=$encode_image;
+        $solicitud->save();
+
+
+        $afiliado = Afiliate::findOrFail($request->dni);
+        $afiliado->solicitud_id = $solicitud->id;
+
+        
+
+
+        return redirect('/dashboard');
+    }
+
+    public function storeReintegro(SolicitudRequest $request){
+        $solicitud = new Solicitud();
+        $solicitud->tipo= "reintegro";
+        $solicitud->institucion=$request->institucion;
+        $solicitud->descripcion=$request->descripcion;
+        $solicitud->estado="activa";
+        $solicitud->fecha=$request->fecha;
+        $solicitud->afiliate=$request->afiliate;
+
+        if($request->hasFile('orden_medica')){
+            $filelink=file_get_contents($request->file('orden_medica'));
+            
+        }else{
+            $filelink=null;
+        }
+        $encode_image= base64_encode($filelink);
+        $solicitud->orden_medica=$encode_image;
+
+        if($request->hasFile('comprobante')){
+            $filelink=file_get_contents($request->file('comprobante'));
+            
+        }else{
+            $filelink=null;
+        }
+        $encode_image= base64_encode($filelink);
+        $solicitud->comprobante=$encode_image;
+
+        $solicitud->save();
+
+
+        $afiliado = Afiliate::findOrFail($request->dni);
+        $afiliado->solicitud_id = $solicitud->id;
+
+        
+
+
+        return redirect()->route('/dashboard');
+    }
+    
 }

@@ -1,12 +1,7 @@
 
 @extends('layouts.app')
 @section('contenido')
-    <!--<x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Crear Afiliado') }}
-            </h2>
-    </x-slot>-->
-<!-- component -->
+
 <br>
 <div class="col-sm-3 w-full "><h2><b>Formulario de afiliado</b></h2></div>
      
