@@ -26,5 +26,6 @@ class PlanesSeeder extends Seeder
         Plan::create([
             'name'=> 'C',
         ]);
+
     }
 }
