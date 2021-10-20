@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'last_name' => 'admin',
             'documento' => '40123456',
             'email' => 'admin@admin.com',
+            'dni_type' => 'dni',
             'role_id' => Role::where('name','admin')->first()->id,
             'password' => bcrypt('12345678'),
         ));
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
             'name' => 'empleado',
             'last_name' => 'empleado',
             'documento' => '41123456',
+            'dni_type' => 'dni',
             'email' => 'empleado@empleado.com',
             'role_id' => Role::where('name','empleado')->first()->id,
             'password' => bcrypt('12345678'),
@@ -39,6 +41,7 @@ class UserSeeder extends Seeder
             'name' => 1,
             'last_name' => 'afiliado',
             'documento' => '42123456',
+            'dni_type' => 'dni',
             'email' => 'afiliado@afiliado.com',
             'role_id' => Role::where('name','afiliado')->first()->id,
             'password' => bcrypt('12345678'),

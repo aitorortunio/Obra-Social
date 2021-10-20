@@ -29,7 +29,7 @@
         <div class="form-group">
                         <label for="Tipo" class="col-sm-2 col-form-label">Documento</label>
                             <div class="col-sm-10 mb-4">
-                                <select class="custom-select" name="dni_type" value="{{old('tipo')}}">
+                                <select class="custom-select" name="dni_type">
                                     <option disabled selected>Tipo</option>
                                         <option value="tipo_dni" >DNI</option>
                                         <option value="tipo_pasaporte" >Pasaporte</option>

@@ -22,11 +22,11 @@
         <div class="form-group">
                         <label for="Tipo" class="col-sm-2 col-form-label">Documento</label>
                             <div class="col-sm-10 mb-4">
-                                <select class="custom-select" name="dni_type" value="{{old('tipo')}}">
+                                <select class="custom-select" name="dni_type" required>
                                     <option disabled selected>Tipo</option>
-                                        <option value="tipo_dni" >DNI</option>
-                                        <option value="tipo_pasaporte" >Pasaporte</option>
-                                        <option value="tipo_libreta" >Libreta</option>
+                                        <option value="dni" >dni</option>
+                                        <option value="pasaporte" >pasaporte</option>
+                                        <option value="libreta" >libreta</option>
                                 </select>
                             </div>
         </div>

@@ -56,6 +56,8 @@ Route::get('/planes-edit/{id}', [PlanController::class, 'edit'])->name('planes-e
 Route::get('/empleado-index', [UserController::class, 'index_empleado'])->name('empleado-index');
 Route::post('/empleado-store', [UserController::class, 'storeEmpleado'])->name('empleado-store');
 Route::get('/empleado-create', [UserController::class, 'createEmpleado'])->name('empleado-create');
+Route::get('/empleado-edit/{id}', [UserController::class, 'editEmpleado'])->name('empleado-edit');
+Route::patch('/empleado-update/{id}', [UserController::class, 'updateEmpleado'])->name('empleado-update');
 
 
 Route::middleware(['empleado', 'admin'])->group(function(){

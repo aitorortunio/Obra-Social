@@ -54,4 +54,24 @@ class UserController extends Controller
         return redirect()->route('empleado-index');
     }
 
+    public function updateEmpleado(Request $r, $id){
+        $empleado = User::findOrFail($id);
+        $empleado->name=$r->name;
+        $empleado->last_name=$r->last_name;
+        if($r->dni_type != NULL){
+            $empleado->dni_type=$r->dni_type;
+        }
+        
+        $empleado->documento=$r->documento;
+        $empleado->role_id = 2;
+
+        $empleado->save();
+        return redirect('empleado-index');
+    }
+
+    public function editEmpleado($id){
+        $empleado = User::findOrFail($id);
+        return view('admin.editEmpleado')->with('empleado', $empleado);
+    }
+
 }

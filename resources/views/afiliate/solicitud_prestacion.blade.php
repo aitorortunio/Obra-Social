@@ -40,7 +40,7 @@
     <!-- buttons -->
     <div class="form-group">
             <button class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded " >Aceptar</button>
-            <a href="{{route('/dashboard')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded ">Cancelar</a> 
+            <a href="{{route('dashboard')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="shadow bg-purple-900 hover:bg-purple-900 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded ">Cancelar</a> 
     </div>
     </div>
   </form>
