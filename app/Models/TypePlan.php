@@ -10,6 +10,7 @@ class TypePlan extends Model
 
     protected $fillable = [
         'name',
+        'state',
         'plan_id',
         'type_id'
     ];

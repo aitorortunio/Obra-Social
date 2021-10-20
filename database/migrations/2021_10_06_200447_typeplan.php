@@ -17,7 +17,7 @@ class TypePlan extends Migration
         Schema::create('typeplan', function (Blueprint $table) {
             $table->id();
             $table->double('price');
-            $table->boolean('state'); //Activo/Inactivo
+            $table->integer('state'); //Activo=1/Inactivo=0
             $table->integer('type_id');
             $table->integer('plan_id');
 

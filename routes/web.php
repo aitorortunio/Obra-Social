@@ -44,14 +44,23 @@ Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
 Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');
 
-
+//Planes
 Route::get('/planes', [PlanController::class, 'show'])->name('planes-show');
-
+Route::get('/plan', [PlanController::class, 'index'])->name('plan');//Vista de gestion de planes
+Route::post('/plan-store', [PlanController::class, 'store'])->name('plan-store');
+Route::get('/planes-create', [PlanController::class, 'create'])->name('planes-create');
+Route::patch('/planes-update/{id}', [PlanController::class, 'update'])->name('planes-update');
+Route::get('/planes-edit/{id}', [PlanController::class, 'edit'])->name('planes-edit');
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
+
 });
 
+
+
+Route::middleware(['admin'])->group(function(){    
+ });
 
 /*
 Route::middleware(['afiiado'])->group(function(){
