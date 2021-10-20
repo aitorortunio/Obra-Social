@@ -16,6 +16,10 @@
       <br>
     </thead>
 
+    @if(Session::has('success'))
+      <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @endif
+    
     <tbody>
     @foreach($empleados as $empleado)
       <tr>

@@ -51,7 +51,7 @@ class UserController extends Controller
         $user->password = bcrypt($r->password);
         $user->role_id = 2;
         $user->save();
-        return redirect()->route('empleado-index');
+        return redirect()->route('empleado-index')->with('success', 'Se creo con exito el empleado');
     }
 
     public function updateEmpleado(Request $r, $id){
@@ -66,7 +66,7 @@ class UserController extends Controller
         $empleado->role_id = 2;
 
         $empleado->save();
-        return redirect('empleado-index');
+        return redirect('empleado-index')->with('success', 'Se guardaron los cambios del empleado');
     }
 
     public function editEmpleado($id){
@@ -78,6 +78,6 @@ class UserController extends Controller
         $empleado = User::findOrFail($id);
         $empleado->delete();
 
-        return redirect()->route('empleado-index');
+        return redirect()->route('empleado-index')->with('success', 'Se elimino con exito el empleado');
     }
 }
