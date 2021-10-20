@@ -41,4 +41,17 @@ class UserController extends Controller
         return view('admin.indexEmpleado')->with('empleados', $empleados);
     }
 
+
+    public function createEmpleado(){
+        return view('admin.createEmpleado');
+    }
+
+    public function storeEmpleado(Request $r){
+        $user = User::create($r->all());
+        $user->password = bcrypt($r->password);
+        $user->role_id = 2;
+        $user->save();
+        return redirect()->route('empleado-index');
+    }
+
 }

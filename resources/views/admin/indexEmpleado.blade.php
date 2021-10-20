@@ -12,7 +12,7 @@
       </tr>
       <br>
 
-        <a style="float:right" href="{{route('planes-create')}}" class="btn btn-dark">Agregar Empleado</a>
+        <a style="float:right" href="{{route('empleado-create')}}" class="btn btn-dark">Agregar Empleado</a>
       <br>
     </thead>
 
@@ -32,7 +32,7 @@
            </td>
         <td>
             <a href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a href="" onclick="return confirm('¿Desea borrar el empleado {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            <a href="" onclick="return confirm('¿Desea borrar el empleado: {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
     @endforeach

@@ -54,8 +54,8 @@ Route::get('/planes-edit/{id}', [PlanController::class, 'edit'])->name('planes-e
 
 //Empleado
 Route::get('/empleado-index', [UserController::class, 'index_empleado'])->name('empleado-index');
-
-
+Route::post('/empleado-store', [UserController::class, 'storeEmpleado'])->name('empleado-store');
+Route::get('/empleado-create', [UserController::class, 'createEmpleado'])->name('empleado-create');
 
 
 Route::middleware(['empleado', 'admin'])->group(function(){

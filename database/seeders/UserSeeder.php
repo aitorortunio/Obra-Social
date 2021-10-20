@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 'admin',
+            'last_name' => 'admin',
             'documento' => '40123456',
             'email' => 'admin@admin.com',
             'role_id' => Role::where('name','admin')->first()->id,
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 'empleado',
+            'last_name' => 'empleado',
             'documento' => '41123456',
             'email' => 'empleado@empleado.com',
             'role_id' => Role::where('name','empleado')->first()->id,
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
 
         User::create(array(
             'name' => 1,
+            'last_name' => 'afiliado',
             'documento' => '42123456',
             'email' => 'afiliado@afiliado.com',
             'role_id' => Role::where('name','afiliado')->first()->id,
