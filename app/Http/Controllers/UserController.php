@@ -74,4 +74,10 @@ class UserController extends Controller
         return view('admin.editEmpleado')->with('empleado', $empleado);
     }
 
+    public function destroyEmpleado($id){
+        $empleado = User::findOrFail($id);
+        $empleado->delete();
+
+        return redirect()->route('empleado-index');
+    }
 }

@@ -58,7 +58,7 @@ Route::post('/empleado-store', [UserController::class, 'storeEmpleado'])->name('
 Route::get('/empleado-create', [UserController::class, 'createEmpleado'])->name('empleado-create');
 Route::get('/empleado-edit/{id}', [UserController::class, 'editEmpleado'])->name('empleado-edit');
 Route::patch('/empleado-update/{id}', [UserController::class, 'updateEmpleado'])->name('empleado-update');
-
+Route::get('/empleado-delete/{id}', [UserController::class, 'destroyEmpleado'])->name('empleado-delete');
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';

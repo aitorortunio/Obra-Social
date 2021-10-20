@@ -27,12 +27,12 @@
             @elseif(($empleado->role_id)==2)
                 Empleado
                 @else
-                    Afiliado
+                  Afiliado
             @endif
            </td>
         <td>
             <a href="{{route('empleado-edit', ['id' => $empleado->id])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a href="" onclick="return confirm('¿Desea borrar el empleado: {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            <a href="{{route('empleado-delete', ['id' => $empleado->id])}}" onclick="return confirm('¿Desea borrar el empleado: {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
     @endforeach
