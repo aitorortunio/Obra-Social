@@ -16,4 +16,8 @@ class Plan extends Model
     
     protected $table = "plans";
 
+
+    public function afiliados(){
+        return $this->hasMany(Afiliate::class);
+    }
 }

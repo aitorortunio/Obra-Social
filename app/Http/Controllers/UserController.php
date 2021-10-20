@@ -36,4 +36,9 @@ class UserController extends Controller
         }
     }
 
+    public function index_empleado(){
+        $empleados = User::all()->where('role_id', 2);
+        return view('admin.indexEmpleado')->with('empleados', $empleados);
+    }
+
 }

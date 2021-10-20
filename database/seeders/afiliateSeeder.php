@@ -36,7 +36,8 @@ class afiliateSeeder extends Seeder
             'email'=>'fsa@gmail.com',
             'tel'=>4,
             'password'=>'12345678',
-            'solicitud_id'=>3000
+            'solicitud_id'=>3000,
+            'plan_id' => 1
         ]);
 
         $solicitud->afiliate = 1;
