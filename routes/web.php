@@ -52,6 +52,12 @@ Route::get('/planes-create', [PlanController::class, 'create'])->name('planes-cr
 Route::patch('/planes-update/{id}', [PlanController::class, 'update'])->name('planes-update');
 Route::get('/planes-edit/{id}', [PlanController::class, 'edit'])->name('planes-edit');
 
+//Empleado
+Route::get('/empleado-index', [UserController::class, 'index_empleado'])->name('empleado-index');
+
+
+
+
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
 
