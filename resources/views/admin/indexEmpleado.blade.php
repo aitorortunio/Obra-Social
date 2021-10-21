@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('contenido')
 
-  <table class="table">
+  <table class="table" id="myTable">
     <thead>
       <tr>
         <th scope="col">Empleado</th>
@@ -19,7 +19,15 @@
     @if(Session::has('success'))
       <div class="alert alert-success">{{ Session::get('success') }}</div>
     @endif
-    
+
+    <div class="col-sm-4">
+        <div class="search-box" align=left>
+        <i class="material-icons">&#xE8B6;</i>
+            <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Nombre de empleado&hellip;">
+        </div>
+    </div>
+
+
     <tbody>
     @foreach($empleados as $empleado)
       <tr>

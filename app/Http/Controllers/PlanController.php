@@ -34,8 +34,6 @@ class PlanController extends Controller
             
         }
 
-        
-
         return view('afiliate.miplan')->with(['planP'=>$planConPrestaciones, 'prestP'=>$prestacionesDelPlan, 'planes'=>$planes]);
     }
 
@@ -57,7 +55,7 @@ class PlanController extends Controller
             $plan->name = $request->name;
 
             $plan->save();
-            return redirect()->route('plan');
+            return redirect()->route('plan')->with('success','Se creo con exito el nuevo plan');
         }
         catch(Exception $ex){
             return redirect()->back()->with('error', 'Nombre de plan ya existente');
@@ -75,7 +73,7 @@ class PlanController extends Controller
             $plan->name = $request->name;
 
             $plan->save();
-            return redirect()->route('plan');
+            return redirect()->route('plan')->with('success','Se guardaron los cambios del plan');
         }
         catch(Exception $ex){
             return redirect()->back()->with('error', 'Nombre de plan ya existente');
