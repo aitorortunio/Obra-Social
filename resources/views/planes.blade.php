@@ -4,38 +4,29 @@
 <head>
 <h1 align=center>Planes</h1>
 </head>
-
-<div class="container row mt-4">
-
-    <div class="child card text-white bg-dark mb-3 mr-3" align=center style="width: 18rem;">
-    <div class="card-body">
-            <h1 class="card-title" align=center >Plan A</h1>
-            <h4  align=center>Prestacion 1</h4>
-            <h4  align=center>Prestacion 2</h4>
-            <h4  align=center>Prestacion 3</h4>
-            <a href="#" class="btn btn-secondary center">Mas info</a>
-        </div>
-    </div>
+<div class="row">
+@foreach($planes as $plan)
+    <div class="card text-white bg-dark mb-3 ml-4 w-47" align=center style="width: 30rem;">
     
-    <div class="child card text-white bg-dark mb-3 mr-3" align=center style="width: 18rem;">
-        <div class="card-body">
-            <h1 class="card-title" align=center>Plan B</h1>
-            <h4  align=center>Prestacion 1</h4>
-            <h4  align=center>Prestacion 2</h4>
-            <h4  align=center>Prestacion 3</h4>
-            <a href="#" class="btn btn-secondary">Mas info</a>
-        </div>
-    </div>
-    
-    <div class="child card text-white bg-dark mb-3 mr-3" align=center style="width: 18rem;">
     <div class="card-body">
-            <h1 class="card-title" align=center>Plan C</h1>
-            <h4  align=center>Prestacion 1</h4>
-            <h4  align=center>Prestacion 2</h4>
-            <h4  align=center>Prestacion 3</h4>
-            <a href="#" class="btn btn-secondary">Mas info</a>
+        
+            <h1 class="card-title" align=center >{{$plan->name}}</h1>
+            
+                @foreach($prestP[$plan->id] as $pp)
+                    @foreach($planP[$plan->id] as $porcent)
+                        @if($porcent->prestation_id == $pp->id)
+                        <div class="row">
+                            <h4  align=left>{{$pp->name}} {{$porcent->percentage}} %</h4> &nbsp; &nbsp;
+                        </div>
+                        @endif
+                    @endforeach
+                @endforeach
+                
+        
+            
         </div>
     </div>
+    @endforeach
 </div>
 
 <!--<a  href="https://www.google.com/">Iniciar sesion</a>

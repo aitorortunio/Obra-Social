@@ -23,5 +23,9 @@ class solicitud extends Model
         'afiliate'
     ];
 
+    public function afiliate($id){
+        $afiliate = Afiliate::findOrFail($id);
+        return $afiliate->name." ".$afiliate->last_name;
+    }
    
 }

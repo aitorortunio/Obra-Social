@@ -36,7 +36,7 @@ class AfiliateController extends Controller
         $afiliado = Afiliate::findOrFail($dni);
         $afiliado->plan_id = $req->id;
         $afiliado->save();
-        return redirect('/dashboard')->with('success', 'Se afilio con exito, por favor ingrese sus datos de loggeo');
+        return redirect('dashboard')->with('success', 'Se afilio con exito, por favor ingrese sus datos de loggeo');
     }
 
 
@@ -97,28 +97,21 @@ class AfiliateController extends Controller
         $solicitud->tipo= 'prestacion';
         $solicitud->institucion=$request->institucion;
         $solicitud->descripcion=$request->descripcion;
-        $solicitud->estado=$request->estado;
+        $solicitud->estado="activa";
         $solicitud->fecha=$request->fecha;
         $solicitud->afiliate=$request->afiliate;
 
-        if($request->hasFile('orden_medica')){
-            $filelink=file_get_contents($request->file('orden_medica'));
-            
-        }else{
-            $filelink=null;
-        }
-        $encode_image= base64_encode($filelink);
-        $solicitud->orden_medica=$encode_image;
+        
         $solicitud->save();
 
 
-        $afiliado = Afiliate::findOrFail($request->dni);
+        $afiliado = Afiliate::findOrFail($request->afiliate);
         $afiliado->solicitud_id = $solicitud->id;
 
         
 
 
-        return redirect('/dashboard');
+        return redirect('dashboard');
     }
 
     public function storeReintegro(SolicitudRequest $request){
@@ -130,34 +123,18 @@ class AfiliateController extends Controller
         $solicitud->fecha=$request->fecha;
         $solicitud->afiliate=$request->afiliate;
 
-        if($request->hasFile('orden_medica')){
-            $filelink=file_get_contents($request->file('orden_medica'));
-            
-        }else{
-            $filelink=null;
-        }
-        $encode_image= base64_encode($filelink);
-        $solicitud->orden_medica=$encode_image;
-
-        if($request->hasFile('comprobante')){
-            $filelink=file_get_contents($request->file('comprobante'));
-            
-        }else{
-            $filelink=null;
-        }
-        $encode_image= base64_encode($filelink);
-        $solicitud->comprobante=$encode_image;
+        
 
         $solicitud->save();
 
 
-        $afiliado = Afiliate::findOrFail($request->dni);
+        $afiliado = Afiliate::findOrFail($request->afiliate);
         $afiliado->solicitud_id = $solicitud->id;
 
         
 
 
-        return redirect()->route('/dashboard');
+        return redirect()->route('dashboard');
     }
     
 }

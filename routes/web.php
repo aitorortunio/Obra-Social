@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfiliateController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlanController;
+use App\Models\Plan;
+use App\Models\PlanPrestation;
+use App\Models\Prestation;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +21,26 @@ use App\Http\Controllers\PlanController;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return view('planes');
+        $planes = Plan::all();
+        //id, nombre
+        //En el lugar del plan id, tengo porcentaje, plan_id, prestation_id
+        $planConPrestaciones = array();
+        //En el lugar del plan id, tengo el nombre de una prestacion
+        $prestacionesDelPlan = array();
+        foreach($planes as $plan){
+            $prestaciones = PlanPrestation::where('plan_id', '=', $plan->id)->get();
+            $planConPrestaciones[$plan->id] = $prestaciones;
+            
+            $prest = array();
+            foreach($prestaciones as $p){
+                $nombrep = Prestation::findOrFail($p->prestation_id);
+                $prest[] = $nombrep;
+
+            }
+            $prestacionesDelPlan[$plan->id] = $prest;
+            
+        }
+    return view('planes')->with(['planP'=>$planConPrestaciones, 'prestP'=>$prestacionesDelPlan, 'planes'=>$planes]);
 })->name('/');
 
 Route::get('/dashboard', function () {
@@ -59,6 +81,12 @@ Route::get('/empleado-create', [UserController::class, 'createEmpleado'])->name(
 Route::get('/empleado-edit/{id}', [UserController::class, 'editEmpleado'])->name('empleado-edit');
 Route::patch('/empleado-update/{id}', [UserController::class, 'updateEmpleado'])->name('empleado-update');
 Route::get('/empleado-delete/{id}', [UserController::class, 'destroyEmpleado'])->name('empleado-delete');
+
+
+Route::get('/gestion', [EmpleadoController::class, 'gestionSolicitud'])->name('gestion');
+Route::get('/show-soli/{id}', [EmpleadoController::class, 'show'])->name('solicitud.show');
+Route::patch('/aprobar/{id}', [EmpleadoController::class, 'aprobar'])->name('aprobar');
+Route::patch('/desaprobar/{id}', [EmpleadoController::class, 'desaprobar'])->name('desaprobar');
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
