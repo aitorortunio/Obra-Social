@@ -43,6 +43,9 @@ class AfiliateController extends Controller
     //Devuelve la vista de todas las recetas asociadas a una categoria
     public function show($id){
         $afiliado = Afiliate::findOrFail($id);
+        
+        dd($afiliado);
+        
        return view('afiliate.misdatos')->with('afiliado', $afiliado);
     }
 

@@ -2,6 +2,7 @@
 @extends('layouts.app')
 @section('contenido')
 
+<div class="container-xl">
   <table class="table" id="myTable">
     <thead>
       <tr>
@@ -50,7 +51,9 @@
     @endforeach
     </tbody>
   </table>
+  <div class="col text-center">
+    <a href="{{route('dashboard')}}" class="btn btn-dark" style="float:center">Volver</a>
+</div>
 
-  <a href="{{route('dashboard')}}" class="btn btn-dark">Volver</a>
-
+</div>
 @endsection

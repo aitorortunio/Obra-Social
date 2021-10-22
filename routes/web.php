@@ -54,7 +54,7 @@ Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfi
 Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
 
 Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
-Route::get('/afiliate/show/{id}', [AfiliateController::class, 'show'])->name('afiliate-show');
+Route::get('/afiliate/show/{dni}', [AfiliateController::class, 'show'])->name('afiliate-show');
 
 Route::get('/solicitud/{dni}', [AfiliateController::class, 'solicitud'])->name('solicitud');
 Route::get('/reintegro/{dni}', [AfiliateController::class, 'reintegro'])->name('reintegro');
@@ -73,6 +73,8 @@ Route::post('/plan-store', [PlanController::class, 'store'])->name('plan-store')
 Route::get('/planes-create', [PlanController::class, 'create'])->name('planes-create');
 Route::patch('/planes-update/{id}', [PlanController::class, 'update'])->name('planes-update');
 Route::get('/planes-edit/{id}', [PlanController::class, 'edit'])->name('planes-edit');
+Route::get('/planes-delete/{id}', [PlanController::class, 'destroyPlan'])->name('planes-delete');
+Route::get('/planes-changeValue/{id}', [PlanController::class, 'changeValue'])->name('planes-changeValue');
 
 //Empleado
 Route::get('/empleado-index', [UserController::class, 'index_empleado'])->name('empleado-index');
@@ -81,7 +83,7 @@ Route::get('/empleado-create', [UserController::class, 'createEmpleado'])->name(
 Route::get('/empleado-edit/{id}', [UserController::class, 'editEmpleado'])->name('empleado-edit');
 Route::patch('/empleado-update/{id}', [UserController::class, 'updateEmpleado'])->name('empleado-update');
 Route::get('/empleado-delete/{id}', [UserController::class, 'destroyEmpleado'])->name('empleado-delete');
-
+Route::get('/user-show/{id}', [UserController::class, 'show'])->name('user-show');
 
 Route::get('/gestion', [EmpleadoController::class, 'gestionSolicitud'])->name('gestion');
 Route::get('/show-soli/{id}', [EmpleadoController::class, 'show'])->name('solicitud.show');

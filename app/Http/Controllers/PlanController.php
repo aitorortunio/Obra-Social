@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\TypePlan;
 use App\Models\PlanPrestation;
 use App\Models\Prestation;
 use Illuminate\Http\Request;
 
 use Exception;
-
 
 class PlanController extends Controller
 {
@@ -83,6 +83,22 @@ class PlanController extends Controller
     public function edit($id){
         $plan = Plan::findOrfail($id);
         return view('plan.EditPlan')->with('plan', $plan);
+    }
+
+
+    public function changeValue($id){
+        $typePlan = TypePlan::where('plan_id', $id)->first();
+        $typePlan->state = ($typePlan->state +1 % 2);
+        $typePlan->save();
+
+        return redirect()->route('plan');
+    }
+
+    public function destroyPlan($id){
+        $plan = Plan::findOrfail($id);
+        $plan->delete();
+
+        return redirect()->route('plan')->with('success', 'Se elimino con exito el plan');
     }
 
 }

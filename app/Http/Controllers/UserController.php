@@ -31,13 +31,13 @@ class UserController extends Controller
             
         }
         catch(Exception $e){
-            dd($e->getMessage());
+            
             return redirect()->back()->with("error", "Error al guardar el nuevo usuario!");
         }
     }
 
     public function index_empleado(){
-        $empleados = User::all()->where('role_id', 2);
+        $empleados = User::all();
         return view('admin.indexEmpleado')->with('empleados', $empleados);
     }
 
@@ -50,6 +50,7 @@ class UserController extends Controller
         $user = User::create($r->all());
         $user->password = bcrypt($r->password);
         $user->role_id = 2;
+
         $user->save();
         return redirect()->route('empleado-index')->with('success', 'Se creo con exito el empleado');
     }
@@ -62,8 +63,15 @@ class UserController extends Controller
             $empleado->dni_type=$r->dni_type;
         }
         
+        if($r->role_id === 'admin'){
+            $empleado->role_id = 1;
+        }elseif($r->role_id === 'empleado'){
+            $empleado->role_id = 2;
+        }else{
+            $empleado->role_id = 3;
+        }
+
         $empleado->documento=$r->documento;
-        $empleado->role_id = 2;
 
         $empleado->save();
         return redirect('empleado-index')->with('success', 'Se guardaron los cambios del empleado');
@@ -80,4 +88,10 @@ class UserController extends Controller
 
         return redirect()->route('empleado-index')->with('success', 'Se elimino con exito el empleado');
     }
+
+    public function show($id) {
+        $user = User::findOrFail($id);
+        return view('showUser')->with('user' , $user);
+    }
+
 }

@@ -24,17 +24,24 @@
         <div class="card-body">
         
 
-        @if(Auth::user()->hasRole('afiliado') || Auth::user()->hasRole('admin'))
-                    
-            <a href="{{route('afiliate-show', ['id'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
-
+        @if(Auth::user()->hasRole('afiliado')) 
+            <a href="{{route('afiliate-show', ['dni'=> Auth::user()->dni])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
         @endif
-        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('empleado'))
-            <a href="{{route('plan')}}" type="button" class="btn btn-dark mb-4 ">Gestión de planes</a>
-            <a href="{{route('empleado-index')}}" type="button" class="btn btn-dark mb-4">Gestión de usuarios</a>
-        @endif 
+
         @if(Auth::user()->hasRole('admin'))
-            <a href="" type="button" class="btn btn-dark mb-4">Gestión de afiliados</a>
+            <a href="{{route('user-show', ['id'=> Auth::user()->id])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
+        @endif
+
+        @if(Auth::user()->hasRole('admin'))
+            <a href="{{route('empleado-index')}}" type="button" class="btn btn-dark mb-4">Gestión de usuarios</a>
+        @endif
+        
+        @if(Auth::user()->hasRole('admin'))
+            <a href="{{route('plan')}}" type="button" class="btn btn-dark mb-4 ">Gestión de planes</a>
+        @endif 
+        
+        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('empleado'))
+            <a href="{{route('gestion')}}" type="button" class="btn btn-dark mb-4">Gestión de afiliados</a>
             <a href="{{route('gestion')}}" type="button" class="btn btn-dark mb-4">Gestión de solicitudes</a>
         @endif
 

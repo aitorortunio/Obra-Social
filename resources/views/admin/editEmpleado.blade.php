@@ -35,13 +35,30 @@
                             <option value="dni" >dni</option>
                             <option value="pasaporte" >pasaporte</option>
                          @endif
-                            
-                           
                         </select>
                 </div>
         </div>
         <div class="form-group">
           <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="Numero" type="integer" name="documento" id="empleado_dni" value= "{{old('documento', $empleado->documento)}}" required>
+
+        </div>
+
+        <div class="form-group">
+        <label  class="col-sm-2 col-form-label mb-4">Rol</label>
+        <div class="col-sm-10 mb-4">
+          <select class="custom-select" name="role_id" value="{{old('role_id', $empleado->role->name)}}">
+          <option disabled selected>{{old('role_id', $empleado->role->name)}}</option>
+            @if($empleado->role->id === 1)
+              <option value="empleado">empleado</option>
+              <option value="afiliado">afiliado</option>
+            @elseif($empleado->role->id === 2)
+              <option value="admin" >admin</option>
+              <option value="afiliado" >afiliado</option>
+            @else
+              <option value="admin" >admin</option>
+              <option value="empleado" >empleado</option>
+            @endif
+          </select>
 
         </div>
 

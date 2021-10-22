@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\TypePlan;
 
 class Plan extends Model
 {
@@ -19,5 +20,11 @@ class Plan extends Model
 
     public function afiliados(){
         return $this->hasMany(Afiliate::class);
+    }
+
+    public function stateValue($id){
+        $typePlan = TypePlan::where('plan_id', $id)->first();
+        //dd($typePlan->state);
+        return $typePlan->state;
     }
 }
