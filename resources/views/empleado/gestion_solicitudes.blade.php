@@ -45,9 +45,8 @@
         </table>
     </div>
 
-    <a href="{{route('dashboard')}}" class="btn btn-dark">Cancelar</a> 
-
-
-
+    <a href="{{route('dashboard')}}" class="btn btn-dark">Volver</a> 
 
 </div>
+
+@endsection
