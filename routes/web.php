@@ -47,7 +47,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
+Route::get('/index', [AfiliateController::class, 'index'])->name('index');
+Route::get('/delete/{id}', [AfiliateController::class, 'delete'])->name('afiliado-delete');
 Route::get('/add-afiliate', [AfiliateController::class, 'create'])->name('add-afiliate');
 Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('store-afiliate');
 Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
@@ -89,6 +90,8 @@ Route::get('/gestion', [EmpleadoController::class, 'gestionSolicitud'])->name('g
 Route::get('/show-soli/{id}', [EmpleadoController::class, 'show'])->name('solicitud.show');
 Route::patch('/aprobar/{id}', [EmpleadoController::class, 'aprobar'])->name('aprobar');
 Route::patch('/desaprobar/{id}', [EmpleadoController::class, 'desaprobar'])->name('desaprobar');
+
+
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';

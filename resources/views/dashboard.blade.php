@@ -41,7 +41,7 @@
         @endif 
         
         @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('empleado'))
-            <a href="{{route('gestion')}}" type="button" class="btn btn-dark mb-4">Gestión de afiliados</a>
+            <a href="{{route('index')}}" type="button" class="btn btn-dark mb-4">Gestión de afiliados</a>
             <a href="{{route('gestion')}}" type="button" class="btn btn-dark mb-4">Gestión de solicitudes</a>
         @endif
 

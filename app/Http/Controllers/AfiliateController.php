@@ -12,7 +12,8 @@ use Solicitud as GlobalSolicitud;
 class AfiliateController extends Controller
 {
     public function index(){
-
+        $afiliados = Afiliate::all();
+        return view('empleado.afiliados')->with('afiliados', $afiliados);
     }
 
     //Crear una nueva categoria
@@ -59,7 +60,10 @@ class AfiliateController extends Controller
     }
 
     public function delete($id){
-        
+        $afilitate = Afiliate::findOrFail($id);
+        $afilitate->delete();
+
+        return redirect()->route('afiliate-index')->with('success', 'Se elimino con exito el afiliado');
     }
 
 
