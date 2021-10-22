@@ -31,9 +31,9 @@
                             <div class="col-sm-10 mb-4">
                                 <select class="custom-select" name="dni_type">
                                     <option disabled selected>Tipo</option>
-                                        <option value="tipo_dni" >DNI</option>
-                                        <option value="tipo_pasaporte" >Pasaporte</option>
-                                        <option value="tipo_libreta" >Libreta</option>
+                                        <option value="dni" >DNI</option>
+                                        <option value="pasaporte" >Pasaporte</option>
+                                        <option value="libreta" >Libreta</option>
                                 </select>
                             </div>
         </div>

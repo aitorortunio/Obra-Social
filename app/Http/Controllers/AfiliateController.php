@@ -22,7 +22,9 @@ class AfiliateController extends Controller
     }
 
     public function store (AfiliateRequest $request){
+        
         $afiliado = Afiliate::create($request->all());
+        //dd($afiliado);
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 
@@ -76,6 +78,7 @@ class AfiliateController extends Controller
         $afiliado->tel=$request->tel;
         $afiliado->house_number = $request->house_number;
      
+        
         $afiliado->save();
         
         return redirect('/dashboard');
