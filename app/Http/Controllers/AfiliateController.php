@@ -44,8 +44,6 @@ class AfiliateController extends Controller
     public function show($id){
         $afiliado = Afiliate::findOrFail($id);
         
-        dd($afiliado);
-        
        return view('afiliate.misdatos')->with('afiliado', $afiliado);
     }
 

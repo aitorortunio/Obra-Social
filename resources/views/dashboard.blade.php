@@ -25,7 +25,7 @@
         
 
         @if(Auth::user()->hasRole('afiliado')) 
-            <a href="{{route('afiliate-show', ['dni'=> Auth::user()->dni])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
+            <a href="{{route('afiliate-show', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
         @endif
 
         @if(Auth::user()->hasRole('admin'))

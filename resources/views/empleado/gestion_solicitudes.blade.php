@@ -45,8 +45,7 @@
         </table>
     </div>
 
-
-
+    <a href="{{route('dashboard')}}" class="btn btn-dark">Cancelar</a> 
 
 
 
