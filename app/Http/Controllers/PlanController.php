@@ -7,8 +7,10 @@ use App\Models\TypePlan;
 use App\Models\PlanPrestation;
 use App\Models\Prestation;
 use Illuminate\Http\Request;
+use App\Models\Type;
 
 use Exception;
+
 
 class PlanController extends Controller
 {
@@ -42,7 +44,8 @@ class PlanController extends Controller
 
     public function create(){
         try{
-            return view('plan.CreatePlan');
+            $tipos = Type::all();
+            return view('plan.CreatePlan')->with('tipos', $tipos);
         }
         catch(Exception $ex){
             return redirect()->back()->with('error', 'Nombre de plan ya existente');
@@ -55,7 +58,18 @@ class PlanController extends Controller
             $plan->name = $request->name;
 
             $plan->save();
+            $type = Type::findOrFail($request->type);
+            $typePlan = new TypePlan();
+            $typePlan->price = 0;
+            $typePlan->state = 1;
+            $typePlan->type_id = $type->id;
+            $typePlan->plan_id = $plan->id;
+
+
+
+
             return redirect()->route('plan')->with('success','Se creo con exito el nuevo plan');
+
         }
         catch(Exception $ex){
             return redirect()->back()->with('error', 'Nombre de plan ya existente');

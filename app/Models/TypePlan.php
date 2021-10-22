@@ -9,7 +9,7 @@ class TypePlan extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
+        'price',
         'state',
         'plan_id',
         'type_id'

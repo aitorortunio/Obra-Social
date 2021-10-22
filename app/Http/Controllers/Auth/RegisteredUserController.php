@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         //return redirect(RouteServiceProvider::HOME);
-       //return redirect()->route('add-plan-afiliate', ['id' => $user->id]);
+       return redirect()->route('add-plan-afiliate', ['id' => $user->id]);
        
        
     }
