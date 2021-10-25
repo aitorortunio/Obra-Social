@@ -17,23 +17,21 @@ class UserController extends Controller
         return view('auth.register')->with('afiliado' , $afiliado);
     }
 
-    function store(Request $r, $dni){        
-        try{
+    function store(Request $r, $dni){   
+                 
             $user = new User(); 
-            $user->name = $r->name;
+            $user->name = $dni;
             $user->email = $r->email;
             $user->password = bcrypt($r->password);
+            //$user->password = '78787877878';
             $user->role_id = 3; //3-->Es el id del afiliado.
-            
-            $user->save();          
+            $user->save();
+
+            $afiliado = Afiliate::findOrFail($dni); 
+            $afiliado->password = $r->password;
+            $afiliado->save();
+
             return redirect()->route('add-plan-afiliate', ['dni' => $dni]); 
-            
-            
-        }
-        catch(Exception $e){
-            
-            return redirect()->back()->with("error", "Error al guardar el nuevo usuario!");
-        }
     }
 
     public function index_empleado(){

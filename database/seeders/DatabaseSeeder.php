@@ -19,9 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PrestacionesSeeder::class);
         $this->call(PlanPrestationSeeder::class);
        // $this->call(SolicitudSeeder::class);
-        $this->call(afiliateSeeder::class);
-        $this->call(TypeSeeder::class);
+       $this->call(TypeSeeder::class);
         $this->call(TypePlanSeeder::class);
+        $this->call(afiliateSeeder::class);
+        
         
 
         // \App\Models\User::factory(10)->create();

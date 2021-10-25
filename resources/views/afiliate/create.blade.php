@@ -101,7 +101,9 @@
         </div>
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Telefono</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="+54 (cod area) numero" type="integer" name="tel" id="telefono">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="+54 (cod area) numero" type="integer" name="tel" id="telefono" pattern=".{8,}"
+                                oninvalid="setCustomValidity('Al menos 8 caracteres')"
+                                onchange="try{setCustomValidity('')}catch(e){}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>

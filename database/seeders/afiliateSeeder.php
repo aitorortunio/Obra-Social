@@ -37,7 +37,7 @@ class afiliateSeeder extends Seeder
             'tel'=>4,
             'password'=>'12345678',
             'solicitud_id'=>3000,
-            'plan_id' => 1
+            'typePlan_id' => 1
         ]);
 
         $solicitud->afiliate = 1;

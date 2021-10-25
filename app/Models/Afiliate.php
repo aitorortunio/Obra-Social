@@ -23,7 +23,7 @@ class Afiliate extends Model
         'email',
         'tel',
         'password',
-        'plan_id'
+        'typePlan_id'
     ];
 
     public function plan(){

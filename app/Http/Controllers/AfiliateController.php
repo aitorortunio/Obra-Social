@@ -8,6 +8,8 @@ use App\Models\Afiliate;
 use App\Models\Plan;
 use App\Models\solicitud;
 use Solicitud as GlobalSolicitud;
+use App\Models\Type;
+use App\Models\TypePlan;
 
 class AfiliateController extends Controller
 {
@@ -22,23 +24,24 @@ class AfiliateController extends Controller
     }
 
     public function store (AfiliateRequest $request){
-        
         $afiliado = Afiliate::create($request->all());
-        //dd($afiliado);
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 
     public function addPlanToAfiliate($dni){
         $afiliado = Afiliate::findOrFail($dni);
         $plans = Plan::all();
-       
-        return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado);
+        $tipos = Type::all();
+        return view('afiliate.plan')->with('plans', $plans)->with('afiliado', $afiliado)->with('tipos', $tipos);
     }
 
     public function storePlanToAfiliate(PlanRequest $req, $dni){
         $afiliado = Afiliate::findOrFail($dni);
-        $afiliado->plan_id = $req->id;
+        $tipePlan = TypePlan::where('plan_id', $req->plan_id)->where('type_id', $req->type_id);
+
+        $afiliado->typePlan_id = $tipePlan->id;
         $afiliado->save();
+
         return redirect('dashboard')->with('success', 'Se afilió con éxito, por favor ingrese sus datos de login');
     }
 

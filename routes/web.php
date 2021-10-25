@@ -67,6 +67,7 @@ Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
 Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');
 
+
 //Planes
 Route::get('/planes', [PlanController::class, 'show'])->name('planes-show');
 Route::get('/plan', [PlanController::class, 'index'])->name('plan');//Vista de gestion de planes

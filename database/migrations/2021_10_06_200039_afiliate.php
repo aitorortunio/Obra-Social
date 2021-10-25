@@ -27,11 +27,11 @@ class Afiliate extends Migration
             $table->string('tel');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->integer('plan_id')->nullable();
+            $table->integer('typePlan_id');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
+            $table->foreign('typePlan_id')->references('id')->on('typeplan')->onDelete('cascade');
         });
     }
 
