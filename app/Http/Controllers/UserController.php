@@ -18,16 +18,19 @@ class UserController extends Controller
     }
 
     function store(Request $r, $dni){   
-                 
+            $afiliado = Afiliate::findOrFail($dni); 
             $user = new User(); 
             $user->name = $dni;
+            $user->last_name= $afiliado->last_name;
+            $user->documento=$dni;
+            $user->dni_type=$afiliado->dni_type;
             $user->email = $r->email;
             $user->password = bcrypt($r->password);
             //$user->password = '78787877878';
             $user->role_id = 3; //3-->Es el id del afiliado.
             $user->save();
 
-            $afiliado = Afiliate::findOrFail($dni); 
+            
             $afiliado->password = $r->password;
             $afiliado->save();
 

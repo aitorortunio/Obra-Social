@@ -27,7 +27,7 @@ class Afiliate extends Migration
             $table->string('tel');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->integer('typePlan_id');
+            $table->integer('typePlan_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
