@@ -39,7 +39,7 @@ class AfiliateController extends Controller
         $afiliado = Afiliate::findOrFail($dni);
         $afiliado->plan_id = $req->id;
         $afiliado->save();
-        return redirect('dashboard')->with('success', 'Se afilio con exito, por favor ingrese sus datos de loggeo');
+        return redirect('dashboard')->with('success', 'Se afilió con éxito, por favor ingrese sus datos de login');
     }
 
 
@@ -65,7 +65,7 @@ class AfiliateController extends Controller
         $afilitate = Afiliate::findOrFail($id);
         $afilitate->delete();
 
-        return redirect()->route('afiliate-index')->with('success', 'Se elimino con exito el afiliado');
+        return redirect()->route('afiliate-index')->with('success', 'Se eliminó con éxito el afiliado');
     }
 
 

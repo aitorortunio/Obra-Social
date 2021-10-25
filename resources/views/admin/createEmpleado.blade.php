@@ -24,9 +24,9 @@
                             <div class="col-sm-10 mb-4">
                                 <select class="custom-select" name="dni_type" required>
                                     <option disabled selected>Tipo</option>
-                                        <option value="dni" >dni</option>
-                                        <option value="pasaporte" >pasaporte</option>
-                                        <option value="libreta" >libreta</option>
+                                        <option value="dni" >DNI</option>
+                                        <option value="pasaporte" >Pasaporte</option>
+                                        <option value="libreta" >Libreta</option>
                                 </select>
                             </div>
         </div>
@@ -74,7 +74,7 @@
 
           <!-- buttons -->
           <div class="form-group">
-            <button class="btn btn-dark" >Siguiente</button>
+            <button class="btn btn-dark" >Siguiente paso</button>
             <a href="{{route('/')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="btn btn-dark">Cancelar</a> 
           </div>
     </div>

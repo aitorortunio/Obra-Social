@@ -68,7 +68,7 @@ class PlanController extends Controller
 
 
 
-            return redirect()->route('plan')->with('success','Se creo con exito el nuevo plan');
+            return redirect()->route('plan')->with('success','Se creó con éxito el nuevo plan');
 
         }
         catch(Exception $ex){
@@ -112,7 +112,7 @@ class PlanController extends Controller
         $plan = Plan::findOrfail($id);
         $plan->delete();
 
-        return redirect()->route('plan')->with('success', 'Se elimino con exito el plan');
+        return redirect()->route('plan')->with('success', 'Se eliminó con éxito el plan');
     }
 
 }

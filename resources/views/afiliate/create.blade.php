@@ -82,7 +82,7 @@
 
         </div>
         <div class="form-group">
-        <label class="col-sm-2 col-form-label mb-4">Numero de calle</label>
+        <label class="col-sm-2 col-form-label mb-4">Número de calle</label>
           <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="house_number" id="numeroCalle">
 
             <!-- @error('dni')

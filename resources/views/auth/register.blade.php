@@ -30,6 +30,9 @@
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
                                 name="password"
+                                pattern=".{8,}"
+                                oninvalid="setCustomValidity('Al menos 8 caracteres')"
+                                onchange="try{setCustomValidity('')}catch(e){}"
                                 required autocomplete="new-password" />
             </div>
 
@@ -39,7 +42,10 @@
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation"
+                                oninvalid="setCustomValidity('Al menos 8 caracteres')"
+                                onchange="try{setCustomValidity('')}catch(e){}"
+                                pattern=".{8,}" required />
             </div>
 
             <div class="flex items-center justify-end mt-4">

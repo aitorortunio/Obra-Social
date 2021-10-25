@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->role_id = 2;
 
         $user->save();
-        return redirect()->route('empleado-index')->with('success', 'Se creo con exito el empleado');
+        return redirect()->route('empleado-index')->with('success', 'Se creó con éxito el empleado');
     }
 
     public function updateEmpleado(Request $r, $id){
@@ -86,7 +86,7 @@ class UserController extends Controller
         $empleado = User::findOrFail($id);
         $empleado->delete();
 
-        return redirect()->route('empleado-index')->with('success', 'Se elimino con exito el empleado');
+        return redirect()->route('empleado-index')->with('success', 'Se eliminó con éxito el empleado');
     }
 
     public function show($id) {

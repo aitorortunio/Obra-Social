@@ -26,14 +26,14 @@
                          <select class="custom-select" name="dni_type" value="{{old('dni_type', $empleado->dni_type)}}">
                          <option disabled selected>{{old('dni_type', $empleado->dni_type)}}</option>
                          @if($empleado->dni_type === 'dni')
-                            <option value="pasaporte" >pasaporte</option>
-                            <option value="libreta" >libreta</option>
+                            <option value="pasaporte" >Pasaporte</option>
+                            <option value="libreta" >Libreta</option>
                          @elseif($empleado->dni_type === 'pasaporte')
-                            <option value="dni" >dni</option>
-                            <option value="libreta" >libreta</option>
+                            <option value="dni" >DNI</option>
+                            <option value="libreta" >Libreta</option>
                          @else
-                            <option value="dni" >dni</option>
-                            <option value="pasaporte" >pasaporte</option>
+                            <option value="dni" >DNI</option>
+                            <option value="pasaporte" >Pasaporte</option>
                          @endif
                         </select>
                 </div>
@@ -64,7 +64,7 @@
 
           <!-- buttons -->
           <div class="form-group">
-            <button class="btn btn-dark" >Siguiente</button>
+            <button class="btn btn-dark" >Siguiente paso</button>
             <a href="{{route('empleado-index')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="btn btn-dark">Cancelar</a> 
           </div>
     </div>
