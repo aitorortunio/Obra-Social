@@ -28,7 +28,7 @@
         
     <!-- buttons -->
     <div class="form-group">
-            <button class="btn btn-dark" >Aprobar</button>
+            <button class="btn btn-dark"onclick="return confirm('¿Desea aprobar la solicitud?')" >Aprobar</button>
            
     </div>
     
