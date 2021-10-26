@@ -27,7 +27,7 @@
       @foreach($planes as $plan)
       <tr>
       <td scope="row">{{$plan->name}}</td>
-            @if(sizeof($plan->afiliados) != 0)
+            @if($plan->cantAfiliados != 0)
               <td><button href="" type="button" class="btn btn-dark" disabled>Deshabilitar plan</button> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>  
               @elseif($plan->stateValue($plan->id) === 0)
                   <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" class="btn btn-dark">Habilitar plan</a> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>

@@ -9,10 +9,10 @@
 <div class="form-group row">
   <label for="inputPassword3" class="col-sm-2 col-form-label">Seleccione un plan</label>
   <div class="col-sm-10">
-      <select class="custom-select">
+      <select class="custom-select" name="plan">
           <option disabled selected>Planes</option>
           @foreach($plans as $plan) 
-            <option value="{{$plan->id}}" name="plan_id">{{$plan->name}}</option>
+            <option value="{{$plan->id}}">{{$plan->name}}</option>
           @endforeach
       </select>
   </div>
@@ -21,10 +21,10 @@
 <div class="form-group row">
   <label for="inputPassword3" class="col-sm-2 col-form-label">Seleccione un tipo de plan</label>
   <div class="col-sm-10">
-      <select class="custom-select">
+      <select class="custom-select" name="tipo">
           <option disabled selected>Tipo de plan</option>
           @foreach($tipos as $tipo) 
-            <option value="{{$tipo->id}}" name="tipo_id">{{$tipo->name}}</option>
+            <option value="{{$tipo->id}}">{{$tipo->name}}</option>
           @endforeach
       </select>
   </div>

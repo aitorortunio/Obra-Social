@@ -17,7 +17,9 @@ class AfiliateRequest extends FormRequest
 
 
         $rules = [
-            'name' => 'required|max:100'
+            'name' => 'required|max:100',
+            'tel' => ['required', 'integer'], 
+            'dni_type' => 'required'
         ];
 
         return $rules;

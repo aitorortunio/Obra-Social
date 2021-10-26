@@ -17,6 +17,11 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
+
+            @if(Session::has('success'))
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                @endif
+                
             <!-- Email Address -->
             <div>
                 <x-label for="Usuario" :value="__('Usuario')" />

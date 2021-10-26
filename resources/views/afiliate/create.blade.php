@@ -10,8 +10,8 @@
       <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
         <div class="form-group">
         <label  class="col-sm-2 col-form-label mb-4">Nombre</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="name" id="afiliate_name">
-
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="name" id="afiliate_name" required value="{{old('name')}}">
+          
             <!-- @error('name')
               <small class="danger">{{$message}}</small>
             @enderror -->
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
         <label  class="col-sm-2 col-form-label mb-4">Apellido</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="last_name" id="afiliate_last_name">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="last_name" id="afiliate_last_name" required value="{{old('last_name')}}">
 
             <!-- @error('last_name')
               <small class="danger">{{$message}}</small>
@@ -36,9 +36,12 @@
                                         <option value="libreta" >Libreta</option>
                                 </select>
                             </div>
+            @error('dni_type')
+              <label class="col-form-label col-sm-10 red" style="color:red">Seleccione un tipo de documento</label>
+            @enderror
         </div>
         <div class="form-group">
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="Numero" type="integer" name="dni" id="afiliate_dni">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="Numero" type="integer" name="dni" id="afiliate_dni" required value="{{old('dni')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -47,7 +50,7 @@
         </div>
         <div class="form-group">
         <label for="Date" class="col-sm-2 col-form-label mb-4">Fecha de Nacimiento</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="date" name="birth_date" id="birth_date">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="date" name="birth_date" id="birth_date" required value="{{old('birth_date')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -56,7 +59,7 @@
         </div>
         <div class="form-group">
         <label for="provincia" class="col-sm-2 col-form-label mb-4">Provincia</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="province" id="provincia">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="province" id="provincia"required value="{{old('province')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -65,7 +68,7 @@
         </div>
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Ciudad</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="city" id="ciudad">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="city" id="ciudad" required value="{{old('city')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -74,7 +77,7 @@
         </div>
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Calle</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="street" id="calle">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="street" id="calle" required value="{{old('street')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -83,7 +86,7 @@
         </div>
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Número de calle</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="house_number" id="numeroCalle">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="house_number" id="numeroCalle" required value="{{old('house_number')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
@@ -92,26 +95,31 @@
         </div>
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Email</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="email" name="email" id="email">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="email" name="email" id="email" required value="{{old('email')}}">
 
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
             @enderror -->
 
         </div>
+
+       
         <div class="form-group">
         <label class="col-sm-2 col-form-label mb-4">Telefono</label>
           <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="+54 (cod area) numero" type="integer" name="tel" id="telefono" pattern=".{8,}"
-                                oninvalid="setCustomValidity('Al menos 8 caracteres')"
-                                onchange="try{setCustomValidity('')}catch(e){}">
-
+          oninvalid="setCustomValidity('Al menos 8 caracteres')"
+          onchange="try{setCustomValidity('')}catch(e){}" required value="{{old('tel')}}">
+          
             <!-- @error('dni')
               <small class="danger">{{$message}}</small>
             @enderror -->
-
+            @error('tel')
+              <label class="col-form-label col-sm-10 red" style="color:red">Tiene que ser de tipo numérico</label>
+            @enderror
         </div>
-       
-       
+
+        
+
 
                 
           <!-- buttons -->

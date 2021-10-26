@@ -37,8 +37,7 @@ class AfiliateController extends Controller
 
     public function storePlanToAfiliate(PlanRequest $req, $dni){
         $afiliado = Afiliate::findOrFail($dni);
-        $tipePlan = TypePlan::where('plan_id', $req->plan_id)->where('type_id', $req->type_id)->first();
-        dd($tipePlan);
+        $tipePlan = TypePlan::where('plan_id', $req->plan)->where('type_id', $req->tipo)->first();
         $afiliado->typePlan_id = $tipePlan->id;
         $afiliado->save();
 
