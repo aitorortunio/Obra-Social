@@ -37,6 +37,26 @@ class UserController extends Controller
             return redirect()->route('add-plan-afiliate', ['dni' => $dni]); 
     }
 
+    function storeMiembro(Request $r, $dni){   
+        $afiliado = Afiliate::findOrFail($dni); 
+        $user = new User(); 
+        $user->name = $dni;
+        $user->last_name= $afiliado->last_name;
+        $user->documento=$dni;
+        $user->dni_type=$afiliado->dni_type;
+        $user->email = $r->email;
+        $user->password = bcrypt($r->password);
+        //$user->password = '78787877878';
+        $user->role_id = 3; //3-->Es el id del afiliado.
+        $user->save();
+
+        
+        $afiliado->password = $r->password;
+        $afiliado->save();
+
+        return redirect()->route('afiliate-show', ['dni' => $afiliado->titular_id])->with('success', 'Se agrego un miembro a la familia'); 
+}
+
     public function index_empleado(){
         $empleados = User::all();
         return view('admin.indexEmpleado')->with('empleados', $empleados);

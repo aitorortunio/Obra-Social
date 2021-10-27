@@ -8,9 +8,15 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form  action="{{ route('registrarPost', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
+        
+        
+        @if($afiliado->titular_id != null)
+            <form  action="{{ route('registrarMiembro', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
+            @csrf    
+        @else
+            <form  action="{{ route('registrarPost', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
             @csrf
+        @endif
     
             <!-- Name -->
             <div>

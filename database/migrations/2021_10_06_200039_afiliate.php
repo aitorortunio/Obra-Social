@@ -25,6 +25,7 @@ class Afiliate extends Migration
             $table->integer('house_number');
             $table->string('email')->unique();
             $table->string('tel');
+            $table->string('titular_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->integer('typePlan_id')->nullable();

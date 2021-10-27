@@ -34,6 +34,15 @@ class AfiliateController extends Controller
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 
+    public function storeMiembro(AfiliateRequest $request, $titularId){
+        $afiliado = Afiliate::create($request->all());
+        $titular = Afiliate::findOrFail($titularId);
+        $afiliado->titular_id = $titularId;
+        $afiliado->typePlan_id = $titular->typePlan_id;
+        $afiliado->save();
+        return redirect()->route('registrar', ['afiliado'=> $afiliado]);
+    }
+
     public function addPlanToAfiliate($dni){
         $afiliado = Afiliate::findOrFail($dni);
         $plans = Plan::all();
@@ -57,7 +66,8 @@ class AfiliateController extends Controller
         $tipePlan = TypePlan::findOrFail($afiliado->typePlan_id);
         $plan = Plan::findOrFail($tipePlan->plan_id);
         $type = Type::findOrFail($tipePlan->type_id);
-       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan);
+        $cantMiembros = Afiliate::where('titular_id', $id)->count();
+       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros);
     }
 
     public function showAfiliate($id){
@@ -140,19 +150,15 @@ class AfiliateController extends Controller
         $solicitud->estado="activa";
         $solicitud->fecha=$request->fecha;
         $solicitud->afiliate=$request->afiliate;
-
-        
-
         $solicitud->save();
-
 
         $afiliado = Afiliate::findOrFail($request->afiliate);
         $afiliado->solicitud_id = $solicitud->id;
-
-        
-
-
         return redirect()->route('dashboard');
+    }
+
+    public function addFamiliar($titular_id){
+        return view('afiliate.createMiembro')->with('titular_id', $titular_id);
     }
     
 }

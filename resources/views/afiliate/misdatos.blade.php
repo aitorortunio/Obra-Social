@@ -5,6 +5,11 @@
   <form action="{{route('afiliate-update', ['id' => $afiliado->dni])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
+    
+    @if(Session::has('success'))
+      <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @endif
+
       <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
         <div class="form-group">
         <label  class="col-sm-2 col-form-label mb-4">Nombre</label>
@@ -104,22 +109,54 @@
 
         </div>
        
-        <div class="form-group">
-          <label class="col-sm-2 col-form-label mb-4">Plan</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $plan->name)}}">
-        </div>
+        
 
-        <div class="form-group">
-          <label class="col-sm-2 col-form-label mb-4">Tipo plan</label>
-          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $tipo->name)}}">
-        </div>
-
-                
-          <!-- buttons -->
-          <div class="form-group">
-            <button class="btn btn-dark" >Guardar</button>
-            <a href="{{route('dashboard')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="btn btn-dark">Cancelar</a> 
-          </div>
+        <div class="col text-center">
+            <button class="btn btn-dark" style="float:center">Guardar</button>
+            <a href="{{route('dashboard')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="btn btn-dark" style="float:center">Cancelar</a> 
+          </div>          
     </div>
   </form>
+
+   <!-- buttons -->
+   <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+    
+   
+   <div class="form-group">
+      <label class="col-sm-2 col-form-label mb-4">Plan</label>
+      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $plan->name)}}">
+    </div>
+
+
+   <div class="form-group">
+    <label class="col-sm-2 col-form-label mb-4">Tipo plan</label>
+    <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $tipo->name)}}">
+  </div>
+  <div class="col text-center">
+    @if($afiliado->titular_id === null)
+      @if($tipo->name === 'Familia 2 hijos')
+        @if($cantMiembros < '3')
+              <a href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
+        @else
+              <button href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
+        @endif
+        
+      @elseif($tipo->name === 'Familia 3 hijos')
+        @if($cantMiembros < 4)
+          <a href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
+        @else
+          <button href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
+        @endif
+            
+        @elseif($tipo->name === 'Pareja Joven')
+          @if($cantMiembros < 1)
+            <a href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar pareja</a>
+          @else
+          <button href="{{route('add-familiar', ['id' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar pareja</button>
+          @endif
+      @endif
+    @endif
+
+  </div>
+</div>
   @endsection

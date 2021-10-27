@@ -65,9 +65,17 @@ Route::get('/prestacion/{dni}', [AfiliateController::class, 'prestacion'])->name
 Route::post('/store-reintegro', [AfiliateController::class, 'storeReintegro'])->name('store-reintegro');
 Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])->name('store-prestacion');
 
+
+//Familiares  
+Route::get('/add-familiar/{id}', [AfiliateController::class, 'addFamiliar'])->name('add-familiar');
+Route::post('/store-miembro/{titularId}', [AfiliateController::class, 'storeMiembro'])->name('store-miembro');
+
+
+
 //Registrar usuario
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
 Route::post('/registrar/{dni}', [UserController::class, 'store'])->name('registrarPost');
+Route::post('/registrarMiembro/{dni}', [UserController::class, 'storeMiembro'])->name('registrarMiembro');
 
 
 //Planes

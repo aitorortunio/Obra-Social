@@ -5,7 +5,6 @@
   <table class="table" id="myTable">
     <thead>
       <tr>
-        <th>Accion</th>
         <th scope="col">Nombre</th>
         <th>Apellido</th>
         <th>Tipo de Documento</th>
@@ -17,6 +16,7 @@
         <th>Numero</th>
         <th>Email</th>
         <th>Telefono</th>
+        <th>Accion</th>
       </tr>
       <br>
 
@@ -39,7 +39,6 @@
     <tbody>
     @foreach($afiliados as $afiliado)
       <tr>
-        <td scope="row"><a href="{{route('afiliate-edit', ['dni' => $afiliado->dni])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></td>
         <td scope="row">{{$afiliado->name}}</td>
         <td scope="row">{{$afiliado->last_name}}</td>
         <td scope="row">{{$afiliado->dni_type}}</td>
@@ -51,6 +50,7 @@
         <td scope="row">{{$afiliado->house_number}}</td>
         <td scope="row">{{$afiliado->email}}</td>
         <td scope="row">{{$afiliado->tel}}</td>
+        <td scope="row"><a href="{{route('afiliate-edit', ['dni' => $afiliado->dni])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></td>
       </tr>
     @endforeach
     </tbody>
