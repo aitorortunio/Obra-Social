@@ -23,6 +23,12 @@ class AfiliateController extends Controller
         return view('afiliate.create');
     }
 
+    public function editAfiliado($dni)
+    {
+        $afiliado = Afiliate::findOrFail($dni);
+        return view('afiliate.edit')->with('afiliado', $afiliado);
+    }
+
     public function store (AfiliateRequest $request){
         $afiliado = Afiliate::create($request->all());
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
@@ -48,8 +54,10 @@ class AfiliateController extends Controller
     //Devuelve la vista de todas las recetas asociadas a una categoria
     public function show($id){
         $afiliado = Afiliate::findOrFail($id);
-        
-       return view('afiliate.misdatos')->with('afiliado', $afiliado);
+        $tipePlan = TypePlan::findOrFail($afiliado->typePlan_id);
+        $plan = Plan::findOrFail($tipePlan->plan_id);
+        $type = Type::findOrFail($tipePlan->type_id);
+       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan);
     }
 
     public function showAfiliate($id){
@@ -83,7 +91,7 @@ class AfiliateController extends Controller
         
         $afiliado->save();
         
-        return redirect('/dashboard');
+        return redirect()->route('index')->with('success', 'Se guardaron los cambios en el afiliado');
 
     }
 

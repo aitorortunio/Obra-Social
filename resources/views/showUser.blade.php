@@ -39,7 +39,9 @@
     </thead>
 
   </table>
+  <div class="col text-center">
+    <a href="{{route('dashboard')}}" class="btn btn-dark" style="float:center">Volver</a>
+</div>
 
-  <a href="{{route('dashboard')}}" class="btn btn-dark">Volver</a>
 </div>
 @endsection

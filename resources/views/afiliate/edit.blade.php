@@ -1,0 +1,128 @@
+
+@extends('layouts.app')
+@section('contenido')
+
+<br>
+<div class="col-sm-3 w-full "><h3><b>Formulario de edición de un afiliado</b></h3></div>
+     
+  <form action="{{ route('afiliate-update', ['id' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PATCH')
+
+      <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+        <div class="form-group">
+        <label  class="col-sm-2 col-form-label mb-4">Nombre</label>
+          <input class="title bg-gray-100 border border-dark-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="name" id="afiliate_name" required value="{{old('name', $afiliado->name)}}" readonly>
+          
+            <!-- @error('name')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label  class="col-sm-2 col-form-label mb-4">Apellido</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="last_name" id="afiliate_last_name" required value="{{old('last_name', $afiliado->last_name)}}" readonly>
+
+            <!-- @error('last_name')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+                        <label for="Tipo" class="col-sm-2 col-form-label">Documento</label>
+                            <div class="col-sm-10 mb-4">
+                                <select class="custom-select" name="dni_type" readonly>
+                                    <option  selected value="{{$afiliado->dni_type}}">{{$afiliado->dni_type}} </option>
+                                </select>
+                            </div>
+            @error('dni_type')
+              <label class="col-form-label col-sm-10 red" style="color:red">Seleccione un tipo de documento</label>
+            @enderror
+        </div>
+        <div class="form-group">
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="Numero" type="integer" name="dni" id="afiliate_dni" required value="{{old('dni', $afiliado->dni)}}" readonly>
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label for="Date" class="col-sm-2 col-form-label mb-4">Fecha de Nacimiento</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="date" name="birth_date" id="birth_date" required value="{{old('birth_date', $afiliado->birth_date)}}" readonly>
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label for="provincia" class="col-sm-2 col-form-label mb-4">Provincia</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="province" id="provincia"required value="{{old('province', $afiliado->province)}}">
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label class="col-sm-2 col-form-label mb-4">Ciudad</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="city" id="ciudad" required value="{{old('city', $afiliado->city)}}">
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label class="col-sm-2 col-form-label mb-4">Calle</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="street" id="calle" required value="{{old('street', $afiliado->street)}}">
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label class="col-sm-2 col-form-label mb-4">Número de calle</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="text" name="house_number" id="numeroCalle" required value="{{old('house_number', $afiliado->house_number)}}">
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+        <div class="form-group">
+        <label class="col-sm-2 col-form-label mb-4">Email</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="" type="email" name="email" id="email" required value="{{old('email', $afiliado->email)}}">
+
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+
+        </div>
+
+       
+        <div class="form-group">
+        <label class="col-sm-2 col-form-label mb-4">Telefono</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="+54 (cod area) numero" type="integer" name="tel" id="telefono" pattern=".{8,}"
+          oninvalid="setCustomValidity('Al menos 8 caracteres')"
+          onchange="try{setCustomValidity('')}catch(e){}" required value="{{old('tel', $afiliado->tel)}}">
+          
+            <!-- @error('dni')
+              <small class="danger">{{$message}}</small>
+            @enderror -->
+            @error('tel')
+              <label class="col-form-label col-sm-10 red" style="color:red">Tiene que ser de tipo numérico</label>
+            @enderror
+        </div>
+
+        
+          <!-- buttons -->
+          <div class="form-group">
+            <button class="btn btn-dark" >Siguiente paso</button>
+            <a href="{{route('index')}}" onclick="return confirm('¿Desea cancelar la operacion?')" class="btn btn-dark">Cancelar</a> 
+          </div>
+    </div>
+  </form>
+  @endsection

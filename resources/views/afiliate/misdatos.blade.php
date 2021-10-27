@@ -104,7 +104,15 @@
 
         </div>
        
-       
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label mb-4">Plan</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $plan->name)}}">
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 col-form-label mb-4">Tipo plan</label>
+          <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $tipo->name)}}">
+        </div>
 
                 
           <!-- buttons -->

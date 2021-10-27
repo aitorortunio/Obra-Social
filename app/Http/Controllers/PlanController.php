@@ -64,10 +64,6 @@ class PlanController extends Controller
             $typePlan->state = 1;
             $typePlan->type_id = $type->id;
             $typePlan->plan_id = $plan->id;
-
-
-
-
             return redirect()->route('plan')->with('success','Se creó con éxito el nuevo plan');
 
         }
@@ -78,7 +74,8 @@ class PlanController extends Controller
 
     public function index(){
         $planes = Plan::all()->sortBy('name');
-        return view('plan.IndexPlan')->with('planes', $planes);
+        $typePlan = TypePlan::all();
+        return view('plan.IndexPlan')->with('planes', $planes)->with('tiposPlanes', $typePlan);
     }
 
     public function update(Request $request, $id){
