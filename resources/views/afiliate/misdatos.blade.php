@@ -180,7 +180,7 @@
             
       <table class="table">
   <thead>
-     
+  @if($cantMiembros != 0) 
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
@@ -188,7 +188,7 @@
     </tr>
   </thead>
   <tbody>
-  @if($cantMiembros != 0)  
+   
     @foreach($miembros as $miembro)
       <tr>
         <td>{{$miembro->name}}</td>
