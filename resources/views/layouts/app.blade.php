@@ -58,6 +58,11 @@
                 }
             }
         }
+
+        $('#myCollapsible').collapse({
+  toggle: false
+})
+
         </script>
     </head>
     

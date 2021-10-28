@@ -67,7 +67,8 @@ class AfiliateController extends Controller
         $plan = Plan::findOrFail($tipePlan->plan_id);
         $type = Type::findOrFail($tipePlan->type_id);
         $cantMiembros = Afiliate::where('titular_id', $id)->count();
-       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros);
+        $miembros = Afiliate::where('titular_id', $id)->get();
+       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros);
     }
 
     public function showAfiliate($id){

@@ -132,6 +132,9 @@
     <label class="col-sm-2 col-form-label mb-4">Tipo plan</label>
     <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text"  id="telefono" value="{{old('name', $tipo->name)}}">
   </div>
+
+  
+
   <div class="col text-center">
     @if($afiliado->titular_id === null)
       @if($tipo->name === 'Familia 2 hijos')
@@ -157,6 +160,55 @@
       @endif
     @endif
 
+
+
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+  Ver mis familiares
+</button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Familiares</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            
+      <table class="table">
+  <thead>
+     
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Documento</th>
+    </tr>
+  </thead>
+  <tbody>
+  @if($cantMiembros != 0)  
+    @foreach($miembros as $miembro)
+      <tr>
+        <td>{{$miembro->name}}</td>
+        <td>{{$miembro->last_name}}</td>
+        <td>{{$miembro->dni}}</td>
+      </tr>
+    </tbody>
+    @endforeach
+  @else
+    No hay miembros en el grupo familiar
+  @endif
+</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+        
+      </div>
+    </div>
   </div>
+</div> 
+
 </div>
   @endsection
