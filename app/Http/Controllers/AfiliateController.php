@@ -68,7 +68,9 @@ class AfiliateController extends Controller
         $type = Type::findOrFail($tipePlan->type_id);
         $cantMiembros = Afiliate::where('titular_id', $id)->count();
         $miembros = Afiliate::where('titular_id', $id)->get();
-       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros);
+        $planes = Plan::all();
+        $tipos = Type::all();
+       return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros)->with('tipos', $tipos)->with('planes', $planes);
     }
 
     public function showAfiliate($id){
@@ -91,6 +93,8 @@ class AfiliateController extends Controller
 
 
     public function update (AfiliateRequest $request, $id){
+        
+        dd($request);
         $afiliado = Afiliate::findOrFail($id);
         $afiliado->province = $request->province;
         $afiliado->city = $request->city;
@@ -98,8 +102,11 @@ class AfiliateController extends Controller
         $afiliado->email=$request->email;
         $afiliado->tel=$request->tel;
         $afiliado->house_number = $request->house_number;
-     
-        
+
+        //$plan = Plan::findOrFail($request->);
+        //$typePlan = TypePlan::findOrFail($request->plan);
+
+
         $afiliado->save();
         
         return redirect()->route('index')->with('success', 'Se guardaron los cambios en el afiliado');
@@ -166,7 +173,7 @@ class AfiliateController extends Controller
     public function index_cupon_pago(){
         return view('cupon_pago.index');
     }
-    
+
     public function eliminarMiembro($id){
         $miembro = Afiliate::findOrFail($id);
         $idTitular = $miembro->titular_id;
@@ -176,7 +183,7 @@ class AfiliateController extends Controller
         $miembro->typePlan_id = $typePlanDefault->id;
 
         $miembro->save();
-        return redirect()->route('afiliate-show', ['dni' => $idTitular]);
+        return redirect()->route('afiliate-show', ['dni' => $idTitular])->with('success', 'Se dio de baja con exito');
 
     }
     
