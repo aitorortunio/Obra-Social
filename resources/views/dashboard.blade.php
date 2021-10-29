@@ -48,7 +48,10 @@
         @if(Auth::user()->hasRole('afiliado'))
         <a href="{{route('planes-show')}}" type="button" class="btn btn-dark mb-4">Planes</a>
         <a href="{{route('solicitud', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Solicitudes</a>
-        <a href="" type="button" class="btn btn-dark mb-4">Obtener cupon de pago</a>
+        <a href="{{route('index_cupon')}}" type="button" class="btn btn-dark mb-4">Obtener cupon de pago</a>
+    </div>
+
+
         @endif
        
         <div class="navbar-nav my-2 my-lg-0">

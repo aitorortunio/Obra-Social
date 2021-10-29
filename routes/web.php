@@ -103,6 +103,11 @@ Route::patch('/aprobar/{id}', [EmpleadoController::class, 'aprobar'])->name('apr
 Route::patch('/desaprobar/{id}', [EmpleadoController::class, 'desaprobar'])->name('desaprobar');
 
 
+Route::get('/cupon_de_pago', [AfiliateController::class, 'index_cupon_pago'])->name('index_cupon');
+
+
+
+
 
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';

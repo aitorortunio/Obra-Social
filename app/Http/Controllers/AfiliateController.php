@@ -161,5 +161,10 @@ class AfiliateController extends Controller
     public function addFamiliar($titular_id){
         return view('afiliate.createMiembro')->with('titular_id', $titular_id);
     }
+
+
+    public function index_cupon_pago(){
+        return view('cupon_pago.index');
+    }
     
 }
