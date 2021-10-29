@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<button class="btn btn-dark" >Siguiente</button>
+<button class="btn btn-dark" >Registrar</button>
 <a href="" type="button" class="btn btn-dark" onclick="return confirm('¿Desea cancelar la operacion?')">Cancelar</a>
 
 </form>

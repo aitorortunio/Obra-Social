@@ -15,6 +15,17 @@
             <label class="col-form-label col-sm-10">{{$message}}</label>
         @enderror
 
+        <div class="form-group">
+          <label for="Tipo" class="col-sm-2 col-form-label">Tipo</label>
+              <div class="col-sm-10 mb-4">
+                  <select class="custom-select" name="type">
+                    @foreach($tipos as $t)
+                      <option value="{{old('id', $t->id)}}" selected>{{$t->name}}</option>
+                    @endforeach      
+                  </select>
+              </div>
+        </div>
+
         <button class="btn btn-dark">Guardar plan</button>
 </form>
 

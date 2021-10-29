@@ -167,4 +167,17 @@ class AfiliateController extends Controller
         return view('cupon_pago.index');
     }
     
+    public function eliminarMiembro($id){
+        $miembro = Afiliate::findOrFail($id);
+        $idTitular = $miembro->titular_id;
+        $miembro->titular_id = 'null';
+        $typePlanDelMiembro = TypePlan::findOrFail($miembro->typePlan_id);
+        $typePlanDefault = TypePlan::where('type_id', 1)->where('plan_id', $typePlanDelMiembro->plan_id)->first();
+        $miembro->typePlan_id = $typePlanDefault->id;
+
+        $miembro->save();
+        return redirect()->route('afiliate-show', ['dni' => $idTitular]);
+
+    }
+    
 }

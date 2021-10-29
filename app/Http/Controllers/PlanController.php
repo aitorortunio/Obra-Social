@@ -64,6 +64,7 @@ class PlanController extends Controller
             $typePlan->state = 1;
             $typePlan->type_id = $type->id;
             $typePlan->plan_id = $plan->id;
+            $typePlan->save();
             return redirect()->route('plan')->with('success','Se creó con éxito el nuevo plan');
 
         }
@@ -82,8 +83,9 @@ class PlanController extends Controller
         try{
             $plan = Plan::findOrfail($id);
             $plan->name = $request->name;
-
             $plan->save();
+            $typePlan = TypePlan::where('plan_id', $id)->where('type_id', $request->type);
+            
             return redirect()->route('plan')->with('success','Se guardaron los cambios del plan');
         }
         catch(Exception $ex){
@@ -93,7 +95,9 @@ class PlanController extends Controller
 
     public function edit($id){
         $plan = Plan::findOrfail($id);
-        return view('plan.EditPlan')->with('plan', $plan);
+        $tipos = Type::all();
+        
+        return view('plan.EditPlan')->with('plan', $plan)->with('tipos', $tipos);
     }
 
 

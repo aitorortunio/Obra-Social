@@ -69,7 +69,7 @@ Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])
 //Familiares  
 Route::get('/add-familiar/{id}', [AfiliateController::class, 'addFamiliar'])->name('add-familiar');
 Route::post('/store-miembro/{titularId}', [AfiliateController::class, 'storeMiembro'])->name('store-miembro');
-
+Route::get('/eliminar-miembro/{dni}', [AfiliateController::class, 'eliminarMiembro'])->name('eliminar-miembro');
 
 
 //Registrar usuario

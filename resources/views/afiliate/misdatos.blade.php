@@ -161,14 +161,13 @@
     @endif
 
 
-
 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
   Ver mis familiares
 </button>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Familiares</h5>
@@ -185,6 +184,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">Documento</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -194,6 +194,12 @@
         <td>{{$miembro->name}}</td>
         <td>{{$miembro->last_name}}</td>
         <td>{{$miembro->dni}}</td>
+        <td>
+        <div class="row">
+          <a href="{{route('eliminar-miembro', ['dni' => $miembro->dni])}}" type="button" class="btn btn-dark col-xs-6" >Dar de baja</a>
+          <a href="{{route('afiliate-show', ['dni' => $miembro->dni])}}"><i class="material-icons col-xs-6">&#xE417;</i></a>
+        </div>
+        </td>
       </tr>
     </tbody>
     @endforeach

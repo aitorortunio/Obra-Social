@@ -53,11 +53,20 @@
                                 pattern=".{8,}" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button class="ml-4">
-                    {{ __('Registrar') }}
-                </x-button>
-            </div>
+            @if($afiliado->titular_id != null)
+                <div class="flex items-center justify-end mt-4">
+                    <x-button class="ml-4">
+                        {{ __('Registrar') }}
+                    </x-button>
+                </div>
+            @else
+                <div class="flex items-center justify-end mt-4">
+                    <x-button class="ml-4">
+                        {{ __('Siguiente paso') }}
+                    </x-button>
+                </div>
+            @endif
+
         </form>
     </x-auth-card>
 </x-guest-layout>
