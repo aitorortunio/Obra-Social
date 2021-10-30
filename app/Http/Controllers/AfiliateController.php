@@ -190,7 +190,8 @@ class AfiliateController extends Controller
         return redirect()->route('afiliate-show', ['dni' => $idTitular])->with('success', 'Se dio de baja con exito');
 
     }
-
+//  $now = date('d-m-Y');
+//  Habilitar del 1 al 10 de Enero
     public function pdfPrimerBimestre($dni){
         $afiliate = Afiliate::findOrFail($dni);
         $tp = $afiliate->typePlan_id;
@@ -218,7 +219,39 @@ class AfiliateController extends Controller
     
 
     }
+//  $now = date('d-m-Y');
+//  Habilitar del 1 al 10 de julio
+    public function pdfSegundoBimestre($dni){
+        $afiliate = Afiliate::findOrFail($dni);
+        $tp = $afiliate->typePlan_id;
+        $tipoPlan = TypePlan::findOrFail($tp);
+        $precio = ($tipoPlan->price * 6);
+        $tipoDePago = "Primer Bimestre";
 
+        $p= $tipoPlan->plan_id;
+        $t= $tipoPlan->type_id;
+
+        $plan=Plan::findOrFail($p);
+        $type=Type::fingOrFail($t);
+
+        $data = [
+        'nombre' => $afiliate->name,
+        'apellido' => $afiliate->last_name,
+        'dni' => $dni,
+        'precio' => $precio,
+        'tipo' => $tipoDePago,
+        'plan' => $plan->name,
+        'type' => $type->name
+    ];
+    $pdf = PDF::loadView('cupon_pago.pdf_view', $data);
+    return $pdf->download('cupon_de_pago.pdf');
+    
+
+    }
+//  $now = date('d-m');
+//Chequear que la fecha actual sea menor al 10 de cada mes en el arreglo de meses seleccionados
+//día 10 del mes que está generando el cupón entonces van a empezar a correr intereses. 
+//5% por cada 15 días posteriores al día 10 del mes correspondiente. 
     public function pdfMensual(PlanRequest $request, $dni){
         $afiliate = Afiliate::findOrFail($dni);
         $tp = $afiliate->typePlan_id;
@@ -249,8 +282,10 @@ class AfiliateController extends Controller
     
 
     }
-
+//  $now = date('d-m');
+//Habilitada solo del 1 al 10 de enero
     public function pdfAnual( $dni){
+       
         $afiliate = Afiliate::findOrFail($dni);
         $tp = $afiliate->typePlan_id;
         $tipoPlan = TypePlan::findOrFail($tp);
