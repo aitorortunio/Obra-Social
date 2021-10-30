@@ -6,10 +6,13 @@ use App\Http\Requests\Auth\PlanRequest;
 use App\Http\Requests\Auth\SolicitudRequest;
 use App\Models\Afiliate;
 use App\Models\Plan;
+use App\Models\PlanPrestation;
 use App\Models\solicitud;
 use Solicitud as GlobalSolicitud;
 use App\Models\Type;
 use App\Models\TypePlan;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class AfiliateController extends Controller
 {
@@ -174,6 +177,7 @@ class AfiliateController extends Controller
         return view('cupon_pago.index');
     }
 
+
     public function eliminarMiembro($id){
         $miembro = Afiliate::findOrFail($id);
         $idTitular = $miembro->titular_id;
@@ -184,6 +188,95 @@ class AfiliateController extends Controller
 
         $miembro->save();
         return redirect()->route('afiliate-show', ['dni' => $idTitular])->with('success', 'Se dio de baja con exito');
+
+    }
+
+    public function pdfPrimerBimestre($dni){
+        $afiliate = Afiliate::findOrFail($dni);
+        $tp = $afiliate->typePlan_id;
+        $tipoPlan = TypePlan::findOrFail($tp);
+        $precio = ($tipoPlan->price * 6);
+        $tipoDePago = "Primer Bimestre";
+
+        $p= $tipoPlan->plan_id;
+        $t= $tipoPlan->type_id;
+
+        $plan=Plan::findOrFail($p);
+        $type=Type::fingOrFail($t);
+
+        $data = [
+        'nombre' => $afiliate->name,
+        'apellido' => $afiliate->last_name,
+        'dni' => $dni,
+        'precio' => $precio,
+        'tipo' => $tipoDePago,
+        'plan' => $plan->name,
+        'type' => $type->name
+    ];
+    $pdf = PDF::loadView('cupon_pago.pdf_view', $data);
+    return $pdf->download('cupon_de_pago.pdf');
+    
+
+    }
+
+    public function pdfMensual(PlanRequest $request, $dni){
+        $afiliate = Afiliate::findOrFail($dni);
+        $tp = $afiliate->typePlan_id;
+        $tipoPlan = TypePlan::findOrFail($tp);
+        if($request->meses)
+            $precio = ($tipoPlan->price * count($request->meses));
+        else
+            $precio = 0;
+        $tipoDePago = "Mensual";
+
+        $p= $tipoPlan->plan_id;
+        $t= $tipoPlan->type_id;
+
+        $plan=Plan::findOrFail($p);
+        $type=Type::findOrFail($t);
+
+        $data = [
+        'nombre' => $afiliate->name,
+        'apellido' => $afiliate->last_name,
+        'dni' => $dni,
+        'precio' => $precio,
+        'tipo' => $tipoDePago,
+        'plan' => $plan->name,
+        'type' => $type->name
+    ];
+    $pdf = PDF::loadView('cupon_pago.pdf_view', $data);
+    return $pdf->download('cupon_de_pago.pdf');
+    
+
+    }
+
+    public function pdfAnual( $dni){
+        $afiliate = Afiliate::findOrFail($dni);
+        $tp = $afiliate->typePlan_id;
+        $tipoPlan = TypePlan::findOrFail($tp);
+        
+        $precio = ($tipoPlan->price * 12);
+        
+        $tipoDePago = "Anual";
+
+        $p= $tipoPlan->plan_id;
+        $t= $tipoPlan->type_id;
+
+        $plan=Plan::findOrFail($p);
+        $type=Type::findOrFail($t);
+
+        $data = [
+        'nombre' => $afiliate->name,
+        'apellido' => $afiliate->last_name,
+        'dni' => $dni,
+        'precio' => $precio,
+        'tipo' => $tipoDePago,
+        'plan' => $plan->name,
+        'type' => $type->name
+    ];
+    $pdf = PDF::loadView('cupon_pago.pdf_view', $data);
+    return $pdf->download('cupon_de_pago.pdf');
+    
 
     }
     

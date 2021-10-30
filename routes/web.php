@@ -104,11 +104,11 @@ Route::patch('/desaprobar/{id}', [EmpleadoController::class, 'desaprobar'])->nam
 
 
 Route::get('/cupon_de_pago', [AfiliateController::class, 'index_cupon_pago'])->name('index_cupon');
+Route::get('/primer_bimestre/{dni}', [AfiliateController::class, 'pdfPrimerBimestre'])->name('primer_bimestre');
 
+Route::get('/mensual/{dni}', [AfiliateController::class, 'pdfMensual'])->name('mensual');
 
-
-
-
+Route::get('/anual/{dni}', [AfiliateController::class, 'pdfAnual'])->name('anual');
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
 
