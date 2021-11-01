@@ -23,9 +23,7 @@ class Solicitud extends Migration
             $table->binary('orden_medica')->nullable();
             $table->binary('comprobante')->nullable();
             $table->integer('afiliate')->unsigned()->nullable();
-            $table->foreign('afiliate')->references('dni')->on('afiliate');
-
-            
+            $table->foreign('afiliate')->references('dni')->on('afiliate')->onDelete('cascade');
         });
     }
 

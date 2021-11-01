@@ -5,6 +5,7 @@ use App\Http\Requests\Auth\AfiliateRequest;
 use App\Http\Requests\Auth\PlanRequest;
 use App\Http\Requests\Auth\SolicitudRequest;
 use App\Models\Afiliate;
+use App\Models\Miembro;
 use App\Models\Plan;
 use App\Models\PlanPrestation;
 use App\Models\solicitud;
@@ -13,6 +14,8 @@ use App\Models\Type;
 use App\Models\TypePlan;
 use Barryvdh\DomPDF\Facade as PDF;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class AfiliateController extends Controller
 {
@@ -37,13 +40,13 @@ class AfiliateController extends Controller
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 
-    public function storeMiembro(AfiliateRequest $request, $titularId){
-        $afiliado = Afiliate::create($request->all());
-        $titular = Afiliate::findOrFail($titularId);
-        $afiliado->titular_id = $titularId;
-        $afiliado->typePlan_id = $titular->typePlan_id;
-        $afiliado->save();
-        return redirect()->route('registrar', ['afiliado'=> $afiliado]);
+    public function storeMiembro(Request $request, $titularId){
+        $miembro = new Miembro();
+        $miembro->name = $request->name;
+        $miembro->last_name = $request->last_name;
+        $miembro->titular_id = $titularId;
+        $miembro->save();
+        return redirect()->route('afiliate-show', ['dni'=> $titularId])->with('success', 'El miembro se creo exitosamente');
     }
 
     public function addPlanToAfiliate($dni){
@@ -69,8 +72,8 @@ class AfiliateController extends Controller
         $tipePlan = TypePlan::findOrFail($afiliado->typePlan_id);
         $plan = Plan::findOrFail($tipePlan->plan_id);
         $type = Type::findOrFail($tipePlan->type_id);
-        $cantMiembros = Afiliate::where('titular_id', $id)->count();
-        $miembros = Afiliate::where('titular_id', $id)->get();
+        $cantMiembros = Miembro::where('titular_id', $id)->count();
+        $miembros = Miembro::where('titular_id', $id)->get();
         $planes = Plan::all();
         $tipos = Type::all();
        return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros)->with('tipos', $tipos)->with('planes', $planes);
@@ -89,15 +92,20 @@ class AfiliateController extends Controller
 
     public function delete($id){
         $afilitate = Afiliate::findOrFail($id);
+        $miembros = Miembro::where('titular_id', $id)->get();
+        foreach($miembros as $miembro){
+            $miembro->delete();
+        }
+
+        $user = User::where('name', $id)->first();
+        $user->delete();
         $afilitate->delete();
 
-        return redirect()->route('afiliate-index')->with('success', 'Se eliminó con éxito el afiliado');
+        return redirect()->route('/')->with('success', 'Se eliminó con éxito el afiliado');
     }
 
 
     public function update (AfiliateRequest $request, $id){
-        
-        dd($request);
         $afiliado = Afiliate::findOrFail($id);
         $afiliado->province = $request->province;
         $afiliado->city = $request->city;
@@ -113,8 +121,28 @@ class AfiliateController extends Controller
         $afiliado->save();
         
         return redirect()->route('index')->with('success', 'Se guardaron los cambios en el afiliado');
-
     }
+
+    public function updateMisDatos(AfiliateRequest $request, $id){
+        $afiliado = Afiliate::findOrFail($id);
+        $afiliado->province = $request->province;
+        $afiliado->city = $request->city;
+        $afiliado->street=$request->street;
+        $afiliado->email=$request->email;
+        $afiliado->tel=$request->tel;
+        $afiliado->house_number = $request->house_number;
+        //$plan = Plan::findOrFail($request->);
+        //$typePlan = TypePlan::findOrFail($request->plan);
+        //PONER Q BUSQUE UN TYPEPLAN COIN EL tipo QUE SELECCIONO Y CON EL PLAN TMB
+        
+        $typePlanNuevo = TypePlan::where('plan_id', $request->plan)->where('type_id', $request->tipo)->first();
+
+        $afiliado->typePlan_id = $typePlanNuevo->id;
+        $afiliado->save();
+        
+        return redirect()->route('dashboard')->with('success', 'Los cambios fueron guardados exitosamente');
+    }
+
 
 
     public function solicitud($dni){
@@ -177,21 +205,31 @@ class AfiliateController extends Controller
         return view('cupon_pago.index');
     }
 
+    public function showMiembro($id){
+        $miembro = Miembro::findOrFail($id);
+        return view('miembro.show')->with('miembro', $miembro);
+    }
+
 
     public function eliminarMiembro($id){
-        $miembro = Afiliate::findOrFail($id);
+        /*$miembro = Afiliate::findOrFail($id);
         $idTitular = $miembro->titular_id;
         $miembro->titular_id = 'null';
         $typePlanDelMiembro = TypePlan::findOrFail($miembro->typePlan_id);
         $typePlanDefault = TypePlan::where('type_id', 1)->where('plan_id', $typePlanDelMiembro->plan_id)->first();
         $miembro->typePlan_id = $typePlanDefault->id;
 
-        $miembro->save();
-        return redirect()->route('afiliate-show', ['dni' => $idTitular])->with('success', 'Se dio de baja con exito');
+        $miembro->save();*/
+
+        $miembro = Miembro::findOrFail($id);
+        $idTitular = $miembro->titular_id;
+        $miembro->delete();
+        return redirect()->route('afiliate-show', ['dni' => $idTitular])->with('success', 'El miembro se dio de baja con exito');
 
     }
 //  $now = date('d-m-Y');
 //  Habilitar del 1 al 10 de Enero
+/*
     public function pdfPrimerBimestre($dni){
         $afiliate = Afiliate::findOrFail($dni);
         $tp = $afiliate->typePlan_id;
@@ -314,5 +352,5 @@ class AfiliateController extends Controller
     
 
     }
-    
+    */
 }

@@ -4,6 +4,11 @@
 <head>
 <h1 align=center>Planes</h1>
 </head>
+
+@if(Session::has('success'))
+      <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @endif
+
 <div class="row">
 @foreach($planes as $plan)
     <div class="card text-white bg-dark mb-3 ml-4 w-47" align=center style="width: 30rem;">

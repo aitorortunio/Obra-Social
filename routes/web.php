@@ -55,6 +55,7 @@ Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfi
 Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
 
 Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
+Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'updateMisDatos'])->name('afiliate-update-misDatos');
 Route::get('/afiliate/show/{dni}', [AfiliateController::class, 'show'])->name('afiliate-show');
 Route::get('/afiliate/edit/{dni}', [AfiliateController::class, 'editAfiliado'])->name('afiliate-edit');
 
@@ -67,9 +68,11 @@ Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])
 
 
 //Familiares  
-Route::get('/add-familiar/{id}', [AfiliateController::class, 'addFamiliar'])->name('add-familiar');
+Route::get('/add-familiar/{idTitular}', [AfiliateController::class, 'addFamiliar'])->name('add-familiar');
 Route::post('/store-miembro/{titularId}', [AfiliateController::class, 'storeMiembro'])->name('store-miembro');
-Route::get('/eliminar-miembro/{dni}', [AfiliateController::class, 'eliminarMiembro'])->name('eliminar-miembro');
+Route::get('/miembro-show/{id}', [AfiliateController::class, 'showMiembro'])->name('miembro-show');
+
+Route::get('/eliminar-miembro/{id}', [AfiliateController::class, 'eliminarMiembro'])->name('eliminar-miembro');
 
 
 //Registrar usuario
