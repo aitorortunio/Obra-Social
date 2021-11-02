@@ -25,9 +25,14 @@ class Plan extends Model
         return $this->hasMany(Afiliate::class);
     }
 
-    public function cantAfiliados(){
-        //dd(Afiliate::where('typePlan_id', $this->id)->count());
-        $count = Afiliate::where('typePlan_id', $this->id)->count();
+    public function cantAfiliados($id){
+        $typePlan = TypePlan::all()->where('plan_id', $id);
+        $count = 0;
+        foreach($typePlan as $tp){
+            $count += Afiliate::where('typePlan_id', $tp->id)->count();
+        }
+       
+        //dd($count);
         return $count;
     }
 

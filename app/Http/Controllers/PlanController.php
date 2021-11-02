@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Afiliate;
 use App\Models\Plan;
 use App\Models\TypePlan;
 use App\Models\PlanPrestation;
@@ -102,9 +103,12 @@ class PlanController extends Controller
 
 
     public function changeValue($id){
-        $typePlan = TypePlan::where('plan_id', $id)->first();
-        $typePlan->state = ($typePlan->state +1 % 2);
-        $typePlan->save();
+        $typePlans = TypePlan::all()->where('plan_id', $id);
+        foreach($typePlans as $typePlan){
+            $typePlan->state = (($typePlan->state +1) % 2); //Hace toggle del estado del plan (habilitado/deshabililtado)
+            $typePlan->save();
+        }
+        
 
         return redirect()->route('plan');
     }

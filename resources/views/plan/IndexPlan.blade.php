@@ -25,7 +25,7 @@
 
     <tbody>
       <!--@foreach($tiposPlanes as $tipoPlan)
-      @endforeach-->
+      @endforeach
         @foreach($planes as $plan)
         <tr>
         <td scope="row">{{$plan->name}}</td>
@@ -36,10 +36,32 @@
                 @else
                     <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" class="btn btn-dark">Deshabilitar plan</a> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
               @endif 
-                <td></td><!-- No tocar con esto queda good-->
+                <td></td>No tocar con esto queda good
         </tr>
         @endforeach
-      
+        -->
+        @foreach($planes as $plan)
+        <tr>
+        <td scope="row">
+          {{$plan->name}}
+        </td>
+        <td>
+          
+          @if($plan->stateValue($plan->id) === 1)
+            @if($plan->cantAfiliados($plan->id) === 0 )
+              <a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Deshabilitar plan</a>
+              @else
+                <button href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" disabled>Deshabilitar plan</button>
+            @endif
+            @else
+              <a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Habilitar plan</a>
+          @endif
+          <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+          <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a>
+        </td>
+        <td></td><!--No tocar con esto queda good-->
+        </tr>
+        @endforeach
     </tbody>
   </table>
 
