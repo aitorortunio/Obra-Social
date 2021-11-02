@@ -61,6 +61,7 @@
         </td>
         <td></td><!--No tocar con esto queda good-->
         </tr>
+        
         @endforeach
     </tbody>
   </table>
