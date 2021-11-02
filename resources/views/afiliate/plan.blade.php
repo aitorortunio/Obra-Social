@@ -11,8 +11,10 @@
   <div class="col-sm-10">
       <select class="custom-select" name="plan">
           <option disabled selected>Planes</option>
-          @foreach($plans as $plan) 
+          @foreach($plans as $plan)
+          @if($plan->stateValue($plan->id) != 0)
             <option value="{{$plan->id}}">{{$plan->name}}</option>
+          @endif
           @endforeach
       </select>
   </div>
