@@ -8,7 +8,7 @@ use App\Http\Controllers\PlanController;
 use App\Models\Plan;
 use App\Models\PlanPrestation;
 use App\Models\Prestation;
-
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,11 +107,12 @@ Route::patch('/desaprobar/{id}', [EmpleadoController::class, 'desaprobar'])->nam
 
 
 Route::get('/cupon_de_pago', [AfiliateController::class, 'index_cupon_pago'])->name('index_cupon');
-Route::get('/primer_bimestre/{dni}', [AfiliateController::class, 'pdfPrimerBimestre'])->name('primer_bimestre');
 
-Route::get('/mensual/{dni}', [AfiliateController::class, 'pdfMensual'])->name('mensual');
+Route::get('/primer_bimestre/{dni}', [PDFController::class, 'pdfPrimerBimestre'])->name('primer_bimestre');
+Route::get('/mensual/{dni}', [PDFController::class, 'pdfMensual'])->name('mensual');
+Route::get('/anual/{dni}', [PDFController::class, 'pdfAnual'])->name('anual');
 
-Route::get('/anual/{dni}', [AfiliateController::class, 'pdfAnual'])->name('anual');
+
 Route::middleware(['empleado', 'admin'])->group(function(){
    // return 'hola';
 
