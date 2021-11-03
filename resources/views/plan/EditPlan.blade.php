@@ -15,20 +15,36 @@
             <label class="col-form-label col-sm-10">{{$message}}</label>
         @enderror
 
+        
+        <label for="Tipo" class="col-sm-2 col-form-label">Tipos de planes</label>
+        <br>
         <div class="form-group">
-          <label for="Tipo" class="col-sm-2 col-form-label">Tipo</label>
-              <div class="col-sm-10 mb-4">
-                  <select class="custom-select" name="type">
-                    @foreach($tipos as $t)
-                     <option value="{{$plans->id}}" {{old('name', $t->name) == $t->name ? "Selected" : ""}}>{{$t->name}}</option>
- 
-<!--                       <option value="{{old('id', $t->id)}}" selected>{{$t->name}}</option>
- -->                    @endforeach      
+                    
+                      <label>Individual Joven</label>
+                      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text" name="individualJoven" value="{{$individualJoven->price}}" id="afiliate_name" required>
+                   
+
+                      <label>Individual Senior</label>
+                      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text" name="individualSenior" value="{{$individualSenior->price}}" id="afiliate_name" required>
+                    
+                      <label>Pareja Joven</label>
+                      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text" name="parejaJoven" value="{{$parejaJoven->price}}" id="afiliate_name" required>
+                    
+                      <label>Familia 2 hijos</label>
+                      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text" name="familia2Hijos" value="{{$familia2Hijos->price}}" required>
+                   
+                      <label>Familia 3 hijos</label>
+                      <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" type="text" name="familia3Hijos" value="{{$familia3Hijos->price}}" required>
+                        
                   </select>
+              </div>
+              <div class="col text-center">
+                <button class="btn btn-dark">Guardar plan</button>
+                <a href="{{route('plan')}}" class="btn btn-dark">Volver</a>
               </div>
         </div>
 
-        <button class="btn btn-dark">Guardar plan</button>
+        
 </form>
 
 

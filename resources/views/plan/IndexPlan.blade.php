@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('contenido')
 
+
   <table class="table" id="myTable">
     <thead>
       <tr>
@@ -24,44 +25,26 @@
     </div>
 
     <tbody>
-      <!--@foreach($tiposPlanes as $tipoPlan)
-      @endforeach
         @foreach($planes as $plan)
         <tr>
-        <td scope="row">{{$plan->name}}</td>
-              @if($tipoPlan)
-                <td><button href="" type="button" class="btn btn-dark" disabled>Deshabilitar plan</button> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>  
-                @elseif($plan->stateValue($plan->id) === 0)
-                    <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" class="btn btn-dark">Habilitar plan</a> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
-                @else
-                    <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" class="btn btn-dark">Deshabilitar plan</a> <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a> <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
-              @endif 
-                <td></td>No tocar con esto queda good
-        </tr>
-        @endforeach
-        -->
-        @foreach($planes as $plan)
-        <tr>
-        <td scope="row">
-          {{$plan->name}}
-        </td>
-        <td>
+          <td scope="row">
+            {{$plan->name}}
+          </td>
           
-          @if($plan->stateValue($plan->id) === 1)
-            @if($plan->cantAfiliados($plan->id) === 0 )
-              <a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Deshabilitar plan</a>
+          @if($plan->id > 3) <!--Los 3 planes (A-B-C) son intocables -->
+            @if($plan->stateValue($plan->id) === 1)
+              @if($plan->cantAfiliados($plan->id) === 0 )
+              <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Deshabilitar plan</a><a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a><a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
+                @else
+                <td><button href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" disabled>Deshabilitar plan</button><a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a><a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
+              @endif
               @else
-                <button href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" disabled>Deshabilitar plan</button>
+              <td><a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Habilitar plan</a><a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a><a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a></td>
             @endif
-            @else
-              <a href="{{route('planes-changeValue', ['id' => $plan->id])}}" type="button" class="btn btn-dark" >Habilitar plan</a>
-          @endif
-          <a href="{{route('planes-edit', ['id' => $plan->id])}}" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-          <a href="{{route('planes-delete', ['id' => $plan->id])}}" onclick="return confirm('¿Desea borrar el plan: {{$plan->name}}?')" class="delete"><i class="material-icons">&#xE872;</i></a>
-        </td>
-        <td></td><!--No tocar con esto queda good-->
-        </tr>
-        
+            <td></td><!-- No tocar -->
+           
+      </tr>
+        @endif
         @endforeach
     </tbody>
   </table>
