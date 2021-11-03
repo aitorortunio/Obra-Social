@@ -22,9 +22,9 @@
                   </select>
               </div>
         </div>
-        <div>
-          <button class="btn btn-dark">Guardar plan</button>
-          <a href="{{route('plan')}}" class="btn btn-dark">Volver</a>
+          <div class="col text-center">
+            <button class="btn btn-dark">Guardar plan</button>
+            <a href="{{route('plan')}}" class="btn btn-dark">Volver</a>
         </div>
 </form>
 

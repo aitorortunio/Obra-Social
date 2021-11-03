@@ -132,9 +132,14 @@ class AfiliateController extends Controller
         $afiliado->email=$request->email;
         $afiliado->tel=$request->tel;
         $afiliado->house_number = $request->house_number;
-        //$plan = Plan::findOrFail($request->);
-        //$typePlan = TypePlan::findOrFail($request->plan);
-        //PONER Q BUSQUE UN TYPEPLAN COIN EL tipo QUE SELECCIONO Y CON EL PLAN TMB
+     
+        $typePlanActual = TypePlan::findOrFail($afiliado->typePlan_id);
+        if($typePlanActual->type_id > 2){//Si el tipo plan actual es un familiar
+            $miembros = Miembro::all()->where('titular_id', $id);
+            foreach($miembros as $miembro){
+                $miembro->delete();
+            }
+        }
         
         $typePlanNuevo = TypePlan::where('plan_id', $request->plan)->where('type_id', $request->tipo)->first();
 

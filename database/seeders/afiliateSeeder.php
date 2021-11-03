@@ -34,7 +34,7 @@ class afiliateSeeder extends Seeder
             'street'=>'s',
             'house_number'=>123,
             'email'=>'fsa@gmail.com',
-            'tel'=>4,
+            'tel'=>43214567,
             'password'=>'12345678',
             'solicitud_id'=>3000,
             'typePlan_id' => 1
