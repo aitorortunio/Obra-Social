@@ -155,7 +155,7 @@
           @if($afiliado->titular_id === null)
             @if($tipo->name === 'Familia 2 hijos')
               @if($cantMiembros < '3')
-                    <a href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
+                    <a href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a> 
               @else
                     <button href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
               @endif
@@ -185,9 +185,9 @@
           @endif
 
 
-            
+           
       </div>
-
+<br>
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">

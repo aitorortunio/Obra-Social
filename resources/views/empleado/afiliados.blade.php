@@ -50,7 +50,7 @@
         <td scope="row">{{$afiliado->house_number}}</td>
         <td scope="row">{{$afiliado->email}}</td>
         <td scope="row">{{$afiliado->tel}}</td>
-        <td scope="row"><a href="{{route('afiliate-edit', ['dni' => $afiliado->dni])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></td>
+        <td scope="row"><a href="{{route('afiliate-showAfiliado', ['dni' => $afiliado->dni])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a></td>
       </tr>
     @endforeach
     </tbody>

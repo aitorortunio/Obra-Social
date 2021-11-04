@@ -80,6 +80,18 @@ class AfiliateController extends Controller
        return view('afiliate.misdatos')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros)->with('tipos', $tipos)->with('planes', $planes);
     }
 
+    public function showAfiliado($id){
+        $afiliado = Afiliate::findOrFail($id);
+        $tipePlan = TypePlan::findOrFail($afiliado->typePlan_id);
+        $plan = Plan::findOrFail($tipePlan->plan_id);
+        $type = Type::findOrFail($tipePlan->type_id);
+        $cantMiembros = Miembro::where('titular_id', $id)->count();
+        $miembros = Miembro::where('titular_id', $id)->get();
+        $planes = Plan::all();
+        $tipos = Type::all();
+       return view('afiliate.edit')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros)->with('tipos', $tipos)->with('planes', $planes);
+    }
+
     public function showAfiliate($id){
         return view('afiliate.plan');
     }
@@ -106,7 +118,7 @@ class AfiliateController extends Controller
     }
 
 
-    public function update (AfiliateRequest $request, $id){
+    public function update (AfiliateRequest $request, $id){//veniendo de la lista de afiliados con rol admin
         $afiliado = Afiliate::findOrFail($id);
         $afiliado->province = $request->province;
         $afiliado->city = $request->city;
@@ -114,17 +126,24 @@ class AfiliateController extends Controller
         $afiliado->email=$request->email;
         $afiliado->tel=$request->tel;
         $afiliado->house_number = $request->house_number;
+     
+        $typePlanActual = TypePlan::findOrFail($afiliado->typePlan_id);
+        if($typePlanActual->type_id > 2){//Si el tipo plan actual es un familiar
+            $miembros = Miembro::all()->where('titular_id', $id);
+            foreach($miembros as $miembro){
+                $miembro->delete();
+            }
+        }
+        
+        $typePlanNuevo = TypePlan::where('plan_id', $request->plan)->where('type_id', $request->tipo)->first();
 
-        //$plan = Plan::findOrFail($request->);
-        //$typePlan = TypePlan::findOrFail($request->plan);
-
-
+        $afiliado->typePlan_id = $typePlanNuevo->id;
         $afiliado->save();
         
         return redirect()->route('index')->with('success', 'Se guardaron los cambios en el afiliado');
     }
 
-    public function updateMisDatos(AfiliateRequest $request, $id){
+    public function updateMisDatos(AfiliateRequest $request, $id){//veniendo del boton en dashboard con rol afiliado
         $afiliado = Afiliate::findOrFail($id);
         $afiliado->province = $request->province;
         $afiliado->city = $request->city;
