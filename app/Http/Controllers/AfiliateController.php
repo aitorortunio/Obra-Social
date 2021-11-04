@@ -50,6 +50,15 @@ class AfiliateController extends Controller
         return redirect()->route('afiliate-show', ['dni'=> $titularId])->with('success', 'El miembro se creo exitosamente');
     }
 
+    public function storeMiembroAdmin(Request $request, $titularId){
+        $miembro = new Miembro();
+        $miembro->name = $request->name;
+        $miembro->last_name = $request->last_name;
+        $miembro->titular_id = $titularId;
+        $miembro->save();
+        return redirect()->route('afiliate-showAfiliado', ['dni'=> $titularId])->with('success', 'El miembro se creo exitosamente');
+    }
+
     public function addPlanToAfiliate($dni){
         $afiliado = Afiliate::findOrFail($dni);
         $plans = Plan::all();
@@ -87,6 +96,7 @@ class AfiliateController extends Controller
         $type = Type::findOrFail($tipePlan->type_id);
         $cantMiembros = Miembro::where('titular_id', $id)->count();
         $miembros = Miembro::where('titular_id', $id)->get();
+       // dd($cantMiembros);
         $planes = Plan::all();
         $tipos = Type::all();
        return view('afiliate.edit')->with('afiliado', $afiliado)->with('tipo', $type)->with('plan', $plan)->with('cantMiembros', $cantMiembros)->with('miembros', $miembros)->with('tipos', $tipos)->with('planes', $planes);
@@ -129,9 +139,11 @@ class AfiliateController extends Controller
      
         $typePlanActual = TypePlan::findOrFail($afiliado->typePlan_id);
         if($typePlanActual->type_id > 2){//Si el tipo plan actual es un familiar
-            $miembros = Miembro::all()->where('titular_id', $id);
-            foreach($miembros as $miembro){
-                $miembro->delete();
+            if($typePlanActual->type_id != $request->tipo){
+                $miembros = Miembro::all()->where('titular_id', $id);
+                foreach($miembros as $miembro){
+                    $miembro->delete();
+                }
             }
         }
         
@@ -154,9 +166,11 @@ class AfiliateController extends Controller
      
         $typePlanActual = TypePlan::findOrFail($afiliado->typePlan_id);
         if($typePlanActual->type_id > 2){//Si el tipo plan actual es un familiar
-            $miembros = Miembro::all()->where('titular_id', $id);
-            foreach($miembros as $miembro){
-                $miembro->delete();
+            if($typePlanActual->type_id != $request->tipo){
+                $miembros = Miembro::all()->where('titular_id', $id);
+                foreach($miembros as $miembro){
+                    $miembro->delete();
+                }
             }
         }
         
@@ -225,6 +239,10 @@ class AfiliateController extends Controller
         return view('afiliate.createMiembro')->with('titular_id', $titular_id);
     }
 
+    public function addFamiliarAdmin($titular_id){
+        return view('afiliate.createMiembroAdmin')->with('titular_id', $titular_id);
+    }
+
 
     public function index_cupon_pago(){
         return view('cupon_pago.index');
@@ -235,17 +253,12 @@ class AfiliateController extends Controller
         return view('miembro.show')->with('miembro', $miembro);
     }
 
+    public function showMiembroAfiliado($id){
+        $miembro = Miembro::findOrFail($id);
+        return view('miembro.showMiembro')->with('miembro', $miembro);
+    }
 
     public function eliminarMiembro($id){
-        /*$miembro = Afiliate::findOrFail($id);
-        $idTitular = $miembro->titular_id;
-        $miembro->titular_id = 'null';
-        $typePlanDelMiembro = TypePlan::findOrFail($miembro->typePlan_id);
-        $typePlanDefault = TypePlan::where('type_id', 1)->where('plan_id', $typePlanDelMiembro->plan_id)->first();
-        $miembro->typePlan_id = $typePlanDefault->id;
-
-        $miembro->save();*/
-
         $miembro = Miembro::findOrFail($id);
         $idTitular = $miembro->titular_id;
         $miembro->delete();
@@ -253,5 +266,12 @@ class AfiliateController extends Controller
 
     }
 
+    public function eliminarMiembroAfiliado($id){
+        $miembro = Miembro::findOrFail($id);
+        $idTitular = $miembro->titular_id;
+        $miembro->delete();
+        return redirect()->route('afiliate-showAfiliado', ['dni' => $idTitular])->with('success', 'El miembro se dio de baja con exito');
+
+    }
     
 }

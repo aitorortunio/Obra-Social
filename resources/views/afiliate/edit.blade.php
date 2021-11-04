@@ -155,27 +155,27 @@
           @if($afiliado->titular_id === null)
             @if($tipo->name === 'Familia 2 hijos')
               @if($cantMiembros < '3')
-                    <a href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
+                    <a href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
               @else
-                    <button href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
+                    <button href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
               @endif
               <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                   Ver mis familiares
                </button>
             @elseif($tipo->name === 'Familia 3 hijos')
               @if($cantMiembros < 4)
-                <a href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
+                <a href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar miembro</a>
               @else
-                <button href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
+                <button href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar miembro</button>
               @endif
               <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                   Ver mis familiares
                </button>
               @elseif($tipo->name === 'Pareja Joven')
                 @if($cantMiembros < 1)
-                  <a href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar pareja</a>
+                  <a href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center">Agregar pareja</a>
                 @else
-                <button href="{{route('add-familiar', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar pareja</button>
+                <button href="{{route('add-familiar-Admin', ['idTitular' => $afiliado->dni])}}" type="button" class="btn btn-dark" style="float:center" disabled>Agregar pareja</button>
                 @endif
                 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                   Ver mis familiares
@@ -216,8 +216,8 @@
                       <td>{{$miembro->last_name}}</td>
                       <td>
                       <div class="row">
-                        <a href="{{route('eliminar-miembro', ['id' => $miembro->id])}}" type="button" class="btn btn-dark" >Dar de baja</a>
-                        <a href="{{route('miembro-show', ['id' => $miembro->id])}}" class="view" title="View"><i class="material-icons col-xs-6">&#xE417;</i></a>
+                        <a href="{{route('eliminar-miembroAfiliado', ['id' => $miembro->id])}}" type="button" class="btn btn-dark" >Dar de baja</a>
+                        <a href="{{route('miembro-showAfiliado', ['id' => $miembro->id])}}" class="view" title="View"><i class="material-icons col-xs-6">&#xE417;</i></a>
                       </div>
                       </td>
                     </tr>

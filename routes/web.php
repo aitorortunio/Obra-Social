@@ -71,10 +71,12 @@ Route::post('/store-prestacion', [AfiliateController::class, 'storePrestacion'])
 //Familiares  
 Route::get('/add-familiar/{idTitular}', [AfiliateController::class, 'addFamiliar'])->name('add-familiar');
 Route::post('/store-miembro/{titularId}', [AfiliateController::class, 'storeMiembro'])->name('store-miembro');
+Route::post('/store-miembroAdmin/{titularId}', [AfiliateController::class, 'storeMiembroAdmin'])->name('store-miembro-Admin');
 Route::get('/miembro-show/{id}', [AfiliateController::class, 'showMiembro'])->name('miembro-show');
-
+Route::get('/miembro-showAfiliado/{id}', [AfiliateController::class, 'showMiembroAfiliado'])->name('miembro-showAfiliado');
+Route::get('/add-familiarAdmin/{idTitular}', [AfiliateController::class, 'addFamiliarAdmin'])->name('add-familiar-Admin');
 Route::get('/eliminar-miembro/{id}', [AfiliateController::class, 'eliminarMiembro'])->name('eliminar-miembro');
-
+Route::get('/eliminar-miembroAfiliado/{id}', [AfiliateController::class, 'eliminarMiembroAfiliado'])->name('eliminar-miembroAfiliado');
 
 //Registrar usuario
 Route::get('/registrar/{afiliado}', [UserController::class, 'create'])->name('registrar');
