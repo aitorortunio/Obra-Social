@@ -6,10 +6,10 @@
   <table class="table" id="myTable">
     <thead>
       <tr>
-        <th scope="col">Empleado</th>
+        <th scope="col">Acciones</th>
+        <th>Empleado</th>
         <th>Documento</th>
         <th>Rol</th>
-        <th>Acciones</th>
       </tr>
       <br>
 
@@ -32,6 +32,10 @@
     <tbody>
     @foreach($empleados as $empleado)
       <tr>
+        <td>    
+          <a href="{{route('empleado-edit', ['id' => $empleado->id])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+          <a href="{{route('empleado-delete', ['id' => $empleado->id])}}" onclick="return confirm('¿Desea borrar el empleado: {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+        </td>
         <td scope="row">{{$empleado->name}}</td>
         <td scope="row">{{$empleado->documento}}</td>
         <td scope="row">
@@ -43,10 +47,7 @@
                   Afiliado
             @endif
            </td>
-        <td>
-            <a href="{{route('empleado-edit', ['id' => $empleado->id])}}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-            <a href="{{route('empleado-delete', ['id' => $empleado->id])}}" onclick="return confirm('¿Desea borrar el empleado: {{$empleado->name}}?')"  class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-        </td>
+        
       </tr>
     @endforeach
     </tbody>

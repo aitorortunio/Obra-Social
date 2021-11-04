@@ -216,7 +216,7 @@
                       <td>{{$miembro->last_name}}</td>
                       <td>
                       <div class="row">
-                        <a href="{{route('eliminar-miembro', ['id' => $miembro->id])}}" type="button" class="btn btn-dark" >Dar de baja</a>
+                        <a href="{{route('eliminar-miembro', ['id' => $miembro->id])}}" type="button" class="btn btn-dark" onclick="return confirm('¿Desea dar de baja al miembro?')">Dar de baja</a>
                         <a href="{{route('miembro-show', ['id' => $miembro->id])}}" class="view" title="View"><i class="material-icons col-xs-6">&#xE417;</i></a>
                       </div>
                       </td>

@@ -9,13 +9,13 @@
           <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
           <thead>
             <tr>
+            <th scope="col">Accion</th>
             <th scope="col">Afiliado</th>
             <th scope="col">Numero</th>
             <th scope="col">Tipo</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha</th>
-            <th scope="col"></th>
             </tr>
           </thead>
             <div class="col-sm-4">
@@ -28,24 +28,27 @@
 
             @foreach ($solicitud as $soli)
             <tr class="hover:bg-grey-lighter">
+              <td>
+                <a href="{{route('solicitud.show', ['id' => $soli->id])}}" class="btn btn-default">
+                  <i class="material-icons">search</i>
+                </a>
+              </td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->afiliate($soli->afiliate)}}</td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->id}}</td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->tipo}}</td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->descripcion}}</td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->estado}}</td>
               <td class="py-4 px-6 border-b border-grey-light">{{$soli->fecha}}</td>
-              <td>
-                <a href="{{route('solicitud.show', ['id' => $soli->id])}}" class="btn btn-default">
-                <i class="material-icons">search</i>
-                </a>
-            </td>
+              
             </tr>
             @endforeach
           </tbody>
         </table>
     </div>
-
-    <a href="{{route('dashboard')}}" class="btn btn-dark">Volver</a> 
+  <div class="col text-center">
+    <a href="{{route('dashboard')}}" class="btn btn-dark">Volver</a>
+  </div>
+     
 
 </div>
 
