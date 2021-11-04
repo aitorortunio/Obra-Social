@@ -54,8 +54,8 @@ Route::post('/store-afiliate', [AfiliateController::class, 'store'])->name('stor
 Route::get('/add-plan-afiliate/{dni}', [AfiliateController::class, 'addPlanToAfiliate'])->name('add-plan-afiliate');
 Route::patch('/store-plan-afiliate/{dni}', [AfiliateController::class, 'storePlanToAfiliate'])->name('store-plan-afiliate');
 
-Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
-//Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'updateMisDatos'])->name('afiliate-update-misDatos');
+//Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'update'])->name('afiliate-update');
+Route::patch('/afiliate/update/{id}', [AfiliateController::class, 'updateMisDatos'])->name('afiliate-update-misDatos');
 Route::get('/afiliate/show/{dni}', [AfiliateController::class, 'show'])->name('afiliate-show');
 Route::get('/afiliate/edit/{dni}', [AfiliateController::class, 'editAfiliado'])->name('afiliate-edit');
 
