@@ -120,7 +120,7 @@ class AfiliateController extends Controller
             $miembro->delete();
         }
 
-        $user = User::where('name', $id)->first();
+        $user = User::where('documento', $id)->first();
         $user->delete();
         $afilitate->delete();
 
