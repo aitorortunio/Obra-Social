@@ -24,7 +24,7 @@ class afiliateSeeder extends Seeder
         $solicitud->fecha = '10/10/2021';
         $solicitud->save();
         Afiliate::create([
-            'dni'=>1,
+            'dni'=>42123456,
             'dni_type'=>'dni',
             'name'=>'afiliado',
             'last_name'=>'rodriguez',
@@ -33,7 +33,7 @@ class afiliateSeeder extends Seeder
             'city'=>'c',
             'street'=>'s',
             'house_number'=>123,
-            'email'=>'fsa@gmail.com',
+            'email'=>'afiliado@afiliado.com',
             'tel'=>43214567,
             'password'=>'12345678',
             'solicitud_id'=>3000,

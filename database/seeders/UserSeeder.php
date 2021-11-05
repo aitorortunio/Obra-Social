@@ -38,8 +38,8 @@ class UserSeeder extends Seeder
         ));
 
         User::create(array(
-            'name' => 1,
-            'last_name' => 'afiliado',
+            'name' => 'afiliado',
+            'last_name' => 'rodriguez',
             'documento' => '42123456',
             'dni_type' => 'dni',
             'email' => 'afiliado@afiliado.com',
