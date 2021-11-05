@@ -3,8 +3,8 @@
 
 <div class="container">
     <div class="2-row w-70 mt-4">
-        <a href="{{route('reintegro', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4 mr-5">Nueva solicitud de reintegro</a>
-        <a href="{{route('prestacion', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Nueva solicitud de prestacion</a>
+        <a href="{{route('reintegro', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4 mr-5">Nueva solicitud de reintegro</a>
+        <a href="{{route('prestacion', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4">Nueva solicitud de prestacion</a>
     </div>
     <div class="w-2/3 mx-auto  ">
       <div class=" bg-white shadow-md rounded my-6 w-auto ">

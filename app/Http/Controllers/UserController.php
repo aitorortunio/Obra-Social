@@ -20,9 +20,9 @@ class UserController extends Controller
     function store(Request $r, $dni){   
             $afiliado = Afiliate::findOrFail($dni); 
             $user = new User(); 
-            $user->name = $dni;
+            $user->name = $r->name;
             $user->last_name= $afiliado->last_name;
-            $user->documento=$dni;
+            $user->documento = $dni;
             $user->dni_type=$afiliado->dni_type;
             $user->email = $r->email;
             $user->password = bcrypt($r->password);

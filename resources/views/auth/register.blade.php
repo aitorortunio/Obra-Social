@@ -10,17 +10,14 @@
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
         
         
-        @if($afiliado->titular_id != null)
-            <form  action="{{ route('registrarMiembro', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
-            @csrf    
-        @else
+        
             <form  action="{{ route('registrarPost', ['dni' => $afiliado->dni]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-        @endif
+   
     
             <!-- Name -->
             <div>
-                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->dni}}" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="hidden" name="name" value="{{$afiliado->name}}" required autofocus />
             </div>
 
             <!-- Email Address -->

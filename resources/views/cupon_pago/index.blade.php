@@ -47,14 +47,14 @@ if($now >= $julioS && $now <= $julioS){
       </div>
       <div class="modal-body">
         @if($disableEnero)
-          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4 disabled"  >Generar pdf primer brimestre</a>
+          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4 disabled"  >Generar pdf primer brimestre</a>
         @else
-          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4"  >Generar pdf primer brimestre</a>
+          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4"  >Generar pdf primer brimestre</a>
         @endif
         @if($disableJulio)
-          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4 disabled" >Generar pdf segundo brimestre</a>
+          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4 disabled" >Generar pdf segundo brimestre</a>
         @else
-          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4" >Generar pdf segundo brimestre</a>
+          <a href="{{route('primer_bimestre', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4" >Generar pdf segundo brimestre</a>
         @endif
       
       </div>
@@ -66,7 +66,7 @@ if($now >= $julioS && $now <= $julioS){
   </div>
 </div>
 <!-- Pago Mensual -->
-<form action="{{ route('mensual', ['dni'=> Auth::user()->name]) }}" method="GET" enctype="multipart/form-data">
+<form action="{{ route('mensual', ['dni'=> Auth::user()->documento]) }}" method="GET" enctype="multipart/form-data">
     @csrf
   <!-- Pago Semestral -->
   <div class="modal fade" id="pagoMensualModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,9 +106,9 @@ if($now >= $julioS && $now <= $julioS){
       </div>
       <div class="modal-body">
       @if($disableEnero)
-      <a href="{{route('anual', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4 disabled">Generar pdf</a>
+      <a href="{{route('anual', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4 disabled">Generar pdf</a>
       @else
-      <a href="{{route('anual', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Generar pdf</a>
+      <a href="{{route('anual', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4">Generar pdf</a>
       @endif
       
       </div>

@@ -38,6 +38,13 @@ class AfiliateController extends Controller
 
     public function store (AfiliateRequest $request){
         $afiliado = Afiliate::create($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->documento = $request->documento;
+        $user->email = $request->email;
+        $user->dni_type = $request->dni_type;
+        $user->save();
         return redirect()->route('registrar', ['afiliado'=> $afiliado]);
     }
 

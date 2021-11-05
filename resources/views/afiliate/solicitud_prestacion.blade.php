@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="form-group">
-          <x-input id="name" class="block mt-1 w-full" type="hidden" name="afiliate" value="{{Auth::user()->name}}"  />
+          <x-input id="name" class="block mt-1 w-full" type="hidden" name="afiliate" value="{{Auth::user()->documento}}"  />
         </div>
     <!-- buttons -->
     <div class="form-group">

@@ -25,7 +25,7 @@
         
 
         @if(Auth::user()->hasRole('afiliado')) 
-            <a href="{{route('afiliate-show', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
+            <a href="{{route('afiliate-show', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4">Mis datos</a>
         @endif
 
         @if(Auth::user()->hasRole('admin'))
@@ -47,7 +47,7 @@
 
         @if(Auth::user()->hasRole('afiliado'))
         <a href="{{route('planes-show')}}" type="button" class="btn btn-dark mb-4">Planes</a>
-        <a href="{{route('solicitud', ['dni'=> Auth::user()->name])}}" type="button" class="btn btn-dark mb-4">Solicitudes</a>
+        <a href="{{route('solicitud', ['dni'=> Auth::user()->documento])}}" type="button" class="btn btn-dark mb-4">Solicitudes</a>
         <a href="{{route('index_cupon')}}" type="button" class="btn btn-dark mb-4">Obtener cupon de pago</a>
     </div>
 
