@@ -28,8 +28,8 @@
     <tbody>
         @foreach($planes as $plan)
         <tr>
-        <td scope="row">
-              {{$plan->name}}
+            <td scope="row">
+                {{$plan->name}}
             </td>
           @if($plan->id > 3) <!--Los 3 planes (A-B-C) son intocables -->
             @if($plan->stateValue($plan->id) === 1)

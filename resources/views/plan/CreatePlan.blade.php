@@ -32,6 +32,17 @@
           @endforeach   
         </div>
 
+
+        <label for="Tipo" class="col-sm-2 col-form-label">Prestaciones</label>
+        <div class="form-group">   
+        @foreach($prestaciones as $prestacion)
+          <label>{{$prestacion->name}}</label>
+            <input class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none w-full " autofill="off" autocomplete="off" placeholder="porcentage" type="text" name="{{$prestacion->id}}" id="afiliate_name" required>
+        @endforeach
+        </div>
+
+
+
         <div class="col text-center">
           <button class="btn btn-dark">Guardar plan</button>
           <a href="{{route('plan')}}" class="btn btn-dark">Volver</a>

@@ -51,11 +51,12 @@ class PlanController extends Controller
             $parejaJoven = 0;
             $familia2Hijos = 0;
             $familia3Hijos = 0;
-            return view('plan.CreatePlan')->with('tipos', $tipos)->with('individualJoven', $individualJoven)->with('individualSenior', $individualSenior)->with('parejaJoven', $parejaJoven)->with('familia2Hijos', $familia2Hijos)->with('familia3Hijos', $familia3Hijos);
-        }
-        catch(Exception $ex){
+            $prestaciones = Prestation::all();
+            return view('plan.CreatePlan')->with('tipos', $tipos)->with('individualJoven', $individualJoven)->with('individualSenior', $individualSenior)->with('parejaJoven', $parejaJoven)->with('familia2Hijos', $familia2Hijos)->with('familia3Hijos', $familia3Hijos)->with('prestaciones', $prestaciones);
+       }
+         catch(Exception $ex){
             return redirect()->back()->with('error', 'Nombre de plan ya existente');
-        }
+        } 
      }
 
     public function store(Request $request){
@@ -64,6 +65,17 @@ class PlanController extends Controller
             $plan = new Plan();
             $plan->name = $request->name;
             $plan->save();
+
+            $prestaciones = Prestation::all();
+            foreach($prestaciones as $prestacion){
+                $ids = $prestacion->id;
+                $percentage = $request->$ids;
+                $planPrestation = new PlanPrestation();
+                $planPrestation->percentage = $percentage;
+                $planPrestation->plan_id = $plan->id;
+                $planPrestation->prestation_id = $prestacion->id;
+                $planPrestation->save();
+            }
 
             //individualJoven
             $typePlan1 = new TypePlan();
@@ -116,8 +128,8 @@ class PlanController extends Controller
 
     public function index(){
         $planes = Plan::all()->sortBy('name');
-        $typePlan = TypePlan::all();
-        return view('plan.IndexPlan')->with('planes', $planes)->with('tiposPlanes', $typePlan);
+        //$typePlan = TypePlan::all();
+        return view('plan.IndexPlan')->with('planes', $planes);
     }
 
     public function update(Request $request, $id){

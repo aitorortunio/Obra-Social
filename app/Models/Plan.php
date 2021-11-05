@@ -32,13 +32,11 @@ class Plan extends Model
             $count += Afiliate::where('typePlan_id', $tp->id)->count();
         }
        
-        //dd($count);
         return $count;
     }
 
     public function stateValue($id){
         $typePlan = TypePlan::where('plan_id', $id)->first();
-        //dd($typePlan->state);
         return $typePlan->state;
     }
 }
