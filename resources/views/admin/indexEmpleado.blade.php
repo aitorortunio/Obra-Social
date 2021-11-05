@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th scope="col">Acciones</th>
-        <th>Empleado</th>
+        <th>Nombre</th>
         <th>Documento</th>
         <th>Rol</th>
       </tr>
@@ -24,7 +24,7 @@
     <div class="col-sm-4">
         <div class="search-box" align=left>
         <i class="material-icons">&#xE8B6;</i>
-            <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Nombre de empleado&hellip;">
+            <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Nombre&hellip;">
         </div>
     </div>
 
