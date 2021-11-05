@@ -40,7 +40,7 @@ class afiliateSeeder extends Seeder
             'typePlan_id' => 1
         ]);
 
-        $solicitud->afiliate = 1;
+        $solicitud->afiliate = 42123456;
         $solicitud->save();
     }
 }

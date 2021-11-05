@@ -22,7 +22,7 @@ class SolicitudSeeder extends Seeder
         $solicitud->descripcion = 'me cobraron mal';
         $solicitud->estado = 'activa';
         $solicitud->fecha = '10/10/2021';
-        $solicitud->afiliate = 1;
+        $solicitud->afiliate = 42123456;
         $solicitud->save();
         
 
